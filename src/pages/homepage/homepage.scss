@@ -1,0 +1,19 @@
+.homepage {
+  display: block;
+
+  .cover-area {
+    width: 100%;
+    height: 450px;
+    margin: 0;
+
+    .cover-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: left top;
+    }
+  }
+}
