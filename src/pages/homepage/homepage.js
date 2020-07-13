@@ -7,8 +7,8 @@ const HomePage = () => (
   //<HeaderNavBar />
     <div className='homepage'>
       <div className='cover-area'>
-        <div className='cover-image'></div>
-        <CallForAction />
+        {/* <div className='cover-image'></div> */}
+        {/* <CallForAction /> */}
       </div>
       <div className='slider-container'>
         <SimpleSlider />
