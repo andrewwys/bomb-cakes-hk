@@ -4,6 +4,7 @@ import SimpleSlider from '../../components/slider/simpleSlider';
 import InfoSection from '../../components/info-section/info-section';
 
 import './homepage.scss';
+import backgroundImage from '../../assets/images/full-screen-background-cake-001.jpg';
 import imageFaq from '../../assets/images/cake-icon-yellow.JPG';
 
 const contentFaq = [
@@ -18,7 +19,18 @@ const contentFaq = [
 const HomePage = () => {
   return(  
     <div className='homepage'>
-      <div className='cover-area'>
+      <div className='cover-area'
+           style={{
+              backgroundImage : `url(${backgroundImage})`,
+              marginBottom: '40px',
+              display: 'block',
+              zIndex: 0,
+              height: '100vh',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: '50% 80%'
+            }}
+      >
         {/* <div className='cover-image'></div> */}
         {/* <CallForAction /> */}
       </div>

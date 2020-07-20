@@ -7,3 +7,11 @@ body {
 li {
   padding: 5px 0;
 }
+
+.font-switch-container {
+  display: flex;
+}
+
+.font-switch-child {
+  margin: 2px 5px;
+}
