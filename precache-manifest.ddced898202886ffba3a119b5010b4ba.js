@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4216e548cae194f7f4ea1d0641640229",
+    "revision": "0c9a704837aee79b8dc3f49df6bc2097",
     "url": "/bomb-cakes-hk/index.html"
   },
   {
