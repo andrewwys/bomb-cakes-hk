@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      chosenFont: "Averia Gruesa Libre",
+      chosenFont: "Mulish",
       fontSize: 19
     };
   }

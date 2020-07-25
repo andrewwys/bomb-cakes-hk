@@ -1,22 +1,24 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+
 import './header.scss';
+
+import logo from '../../assets/images/logo-white.png';
 
 const Header = () => (
   <div className='header'>
-    <div className='option' to='/'>
+    <div className='option'>
       ORDER
     </div>
-    <div className='option' to='/'>
+    <div className='option'>
       ABOUT
     </div>
-    <div className='logo'>
-      LOGO
+    <div className='logo-container'>
+      <img className='logo' src={logo}/>
     </div>
-    <div className='option' to='/'>
+    <div className='option'>
       FAQ
     </div>
-    <div className='option' to='/'>
+    <div className='option'>
       LOCATION
     </div>
   </div>
@@ -24,24 +26,3 @@ const Header = () => (
 
 export default Header;
 
-{/* 
-  <div className='options'>
-<Link className='option' to='/'>
-  ORDER
-</Link>
-<Link className='option' to='/'>
-  ABOUT
-</Link>
-</div>
-<Link className='logo-container' to="/">
-<div className='logo'></div>
-</Link>
-<div className='options'>
-<Link className='option' to='/'>
-  FAQ
-</Link>
-<Link className='option' to='/'>
-  LOCATION
-</Link>
-</div> 
-*/}
