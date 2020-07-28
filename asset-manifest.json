@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/bomb-cakes-hk/static/css/main.799e7ef9.chunk.css",
-    "main.js": "/bomb-cakes-hk/static/js/main.f022dec2.chunk.js",
-    "main.js.map": "/bomb-cakes-hk/static/js/main.f022dec2.chunk.js.map",
+    "main.css": "/bomb-cakes-hk/static/css/main.17f40cd5.chunk.css",
+    "main.js": "/bomb-cakes-hk/static/js/main.7e264076.chunk.js",
+    "main.js.map": "/bomb-cakes-hk/static/js/main.7e264076.chunk.js.map",
     "runtime-main.js": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js",
     "runtime-main.js.map": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js.map",
     "static/css/2.8a960da2.chunk.css": "/bomb-cakes-hk/static/css/2.8a960da2.chunk.css",
-    "static/js/2.5c4a2c6a.chunk.js": "/bomb-cakes-hk/static/js/2.5c4a2c6a.chunk.js",
-    "static/js/2.5c4a2c6a.chunk.js.map": "/bomb-cakes-hk/static/js/2.5c4a2c6a.chunk.js.map",
+    "static/js/2.a825bfe0.chunk.js": "/bomb-cakes-hk/static/js/2.a825bfe0.chunk.js",
+    "static/js/2.a825bfe0.chunk.js.map": "/bomb-cakes-hk/static/js/2.a825bfe0.chunk.js.map",
     "index.html": "/bomb-cakes-hk/index.html",
-    "precache-manifest.ddced898202886ffba3a119b5010b4ba.js": "/bomb-cakes-hk/precache-manifest.ddced898202886ffba3a119b5010b4ba.js",
+    "precache-manifest.5292505828db0c35d177f48db70fc74e.js": "/bomb-cakes-hk/precache-manifest.5292505828db0c35d177f48db70fc74e.js",
     "service-worker.js": "/bomb-cakes-hk/service-worker.js",
     "static/css/2.8a960da2.chunk.css.map": "/bomb-cakes-hk/static/css/2.8a960da2.chunk.css.map",
-    "static/css/main.799e7ef9.chunk.css.map": "/bomb-cakes-hk/static/css/main.799e7ef9.chunk.css.map",
-    "static/js/2.5c4a2c6a.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.5c4a2c6a.chunk.js.LICENSE.txt",
+    "static/css/main.17f40cd5.chunk.css.map": "/bomb-cakes-hk/static/css/main.17f40cd5.chunk.css.map",
+    "static/js/2.a825bfe0.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.a825bfe0.chunk.js.LICENSE.txt",
     "static/media/cake-icon-yellow.JPG": "/bomb-cakes-hk/static/media/cake-icon-yellow.58faf5b9.JPG",
     "static/media/full-screen-background-cake-001.jpg": "/bomb-cakes-hk/static/media/full-screen-background-cake-001.cd95c1ed.jpg",
     "static/media/slick-theme.css": "/bomb-cakes-hk/static/media/slick.f97e3bbf.svg"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.a467b019.js",
     "static/css/2.8a960da2.chunk.css",
-    "static/js/2.5c4a2c6a.chunk.js",
-    "static/css/main.799e7ef9.chunk.css",
-    "static/js/main.f022dec2.chunk.js"
+    "static/js/2.a825bfe0.chunk.js",
+    "static/css/main.17f40cd5.chunk.css",
+    "static/js/main.7e264076.chunk.js"
   ]
 }
