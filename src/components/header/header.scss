@@ -1,20 +1,39 @@
 .header {
   position: fixed;
-  width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
- // background-color: black;
+  flex-wrap: nowrap;
+  width: 100%;
   z-index: 999;
-}
 
-.option, .logo-container {
-  margin: 20px 40px;
-  font-size: larger;
+  .option-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: auto;
 
-  .logo {
-    height: 60px;
-    width: 60px;
+    .option, .logo-container {
+      margin: 20px 40px;
+      font-size: larger;
+    
+      .logo {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+
+  .custom-button {
+    position: absolute;
+    left: 85%;
+    width: 10%;
+    max-width: 200px;
   }
 }
+

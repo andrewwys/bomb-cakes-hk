@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import CustomButton from '../custom-button/custom-button';
+
 import './header.scss';
 
 import logo from '../../assets/images/logo-white.png';
@@ -36,21 +38,24 @@ class Header extends Component {
         className='header' 
         style={{backgroundColor: `rgba(0, 0, 0, ${this.state.backgroundOpacity})`}}
       >
-        <div className='option'>
-          ORDER
-        </div>
-        <div className='option'>
-          ABOUT
-        </div>
-        <div className='logo-container'>
-          <img className='logo' src={logo}/>
-        </div>
-        <div className='option'>
-          FAQ
-        </div>
-        <div className='option'>
-          LOCATION
-        </div>
+        <div className='option-wrapper'>
+          <div className='option'>
+            PRODUCTS
+          </div>
+          <div className='option'>
+            ABOUT
+          </div>
+          <div className='logo-container'>
+            <img className='logo' src={logo}/>
+          </div>
+          <div className='option'>
+            FAQ
+          </div>
+          <div className='option'>
+            LOCATION
+          </div>
+        </div>        
+        <CustomButton className='custom-button'>ORDER NOW</CustomButton>
       </nav>
     )
   }

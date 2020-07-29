@@ -1,0 +1,42 @@
+$yellow: #f5c000;
+
+.custom-button {
+  outline: none;
+  min-width: 160px;
+  width: 180px;
+  height: 60px;
+  border-radius: 60px;
+  border: 6px solid white;
+  text-align: center;
+  padding: 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: white;
+  background-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: $yellow;
+    color: black;
+    border-color: $yellow;
+  }
+
+  &:active {
+    background: #b59953;
+    border-color: #b59953;
+    padding-top: 3px;
+  }
+
+  &.google-sign-in {
+    background-color: #4285f4;
+    color: white;
+
+    &:hover {
+      background-color: #357ae8;
+      border: none;
+    }
+  }
+}
