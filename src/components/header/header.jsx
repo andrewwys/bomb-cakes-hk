@@ -24,12 +24,16 @@ class Header extends Component {
   }
 
   // The header top nav-bar will change its background opacity on scrolling when the 
-  // window page Y offset position falls in a certain range (e.g. 270-530)
+  // window page Y offset position falls a certain range.
+  // (i.e. between half of the window's height and the window's height)
   handleScroll = () => {
-    let pos = window.pageYOffset;
-    if (pos < 270) this.setState({backgroundOpacity: 0}) 
-    else if (pos > 530) this.setState({backgroundOpacity: 1}) 
-    else this.setState({backgroundOpacity: (pos-270) / 260});
+    const pos = window.pageYOffset;
+    const height = window.innerHeight - 100; // deducting the header's height
+    console.log(pos);
+    console.log(height);
+    if (pos < height/2 ) this.setState({backgroundOpacity: 0}) 
+    else if (pos > height) this.setState({backgroundOpacity: 1}) 
+    else this.setState({backgroundOpacity: ((pos *2 / height) -1)});
   }
 
   render() {
@@ -46,7 +50,7 @@ class Header extends Component {
             ABOUT
           </div>
           <div className='logo-container'>
-            <img className='logo' src={logo}/>
+            <img className='logo' src={logo} alt='logo'/>
           </div>
           <div className='option'>
             FAQ

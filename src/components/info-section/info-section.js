@@ -10,7 +10,7 @@ const InfoSection = ({ title, image, content }) => {
         <h1 className='content-title'>{title}</h1>
         <ul className='content-list'>
           {content.map((row) =>
-            <li className='list-item'>{row}</li>
+            <li className='list-item' key={row.id} >{row}</li>
           )}
         </ul>
       </div>

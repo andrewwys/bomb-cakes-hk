@@ -20,16 +20,16 @@ class SimpleSlider extends Component {
     return (
       <Slider {...settings}>
         <div>
-         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg"} />
+         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg"} alt='product slide' />
         </div>
         <div>
-         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract02.jpg"} />
+         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract02.jpg"} alt='product slide' />
         </div>
         <div>
-         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract03.jpg"} />
+         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract03.jpg"} alt='product slide' />
         </div>
         <div>
-         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract04.jpg"} />
+         <img src={"https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract04.jpg"} alt='product slide' />
         </div>
       </Slider>
     );
