@@ -2,6 +2,7 @@ import React from 'react';
 //import CallForAction from '../../components/call-for-action/call-for-action';
 import SimpleSlider from '../../components/slider/simpleSlider';
 import InfoSection from '../../components/info-section/info-section';
+// import ModalBox from '../../components/modal-box/modal-box';
 
 import './homepage.scss';
 import backgroundImage from '../../assets/images/full-screen-background-cake-001.jpg';
@@ -42,6 +43,7 @@ const HomePage = () => {
         image={ imageFaq }
         content={ contentFaq }
       />
+      {/* <ModalBox show={true} /> */}
     </div>
   );
 }

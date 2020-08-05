@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CustomButton from '../custom-button/custom-button';
+import ModalBox from '../modal-box/modal-box';
 
 import './header.scss';
 
@@ -11,7 +12,8 @@ class Header extends Component {
     super();
 
     this.state = {
-      backgroundOpacity: 0
+      backgroundOpacity: 0,
+      orderModalBoxVisible: false
     };
   }
 
@@ -29,11 +31,20 @@ class Header extends Component {
   handleScroll = () => {
     const pos = window.pageYOffset;
     const height = window.innerHeight - 100; // deducting the header's height
-    console.log(pos);
-    console.log(height);
     if (pos < height/2 ) this.setState({backgroundOpacity: 0}) 
     else if (pos > height) this.setState({backgroundOpacity: 1}) 
     else this.setState({backgroundOpacity: ((pos *2 / height) -1)});
+  }
+
+  showOrderModalBox = () => {
+    this.setState({ orderModalBoxVisible: true});
+  }
+
+  closeOrderModalBox = (event) => {
+    const closeBox = event.target.id;
+    if (closeBox === 'modalBackground' || closeBox === 'closeButton') {
+      this.setState({ orderModalBoxVisible: false});
+    }
   }
 
   render() {
@@ -59,11 +70,19 @@ class Header extends Component {
             LOCATION
           </div>
         </div>        
-        <CustomButton className='custom-button'>ORDER NOW</CustomButton>
+        <CustomButton 
+          buttonClassName='header-order-button'
+          onClick={this.showOrderModalBox}
+        > ORDER NOW
+        </CustomButton>
+        <ModalBox 
+          show={this.state.orderModalBoxVisible} 
+          handleClose={this.closeOrderModalBox}
+        > content content 
+        </ModalBox>
       </nav>
     )
   }
 }
 
 export default Header;
-

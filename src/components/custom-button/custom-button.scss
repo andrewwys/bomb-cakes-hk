@@ -1,7 +1,6 @@
 $yellow: #f5c000;
 
-.custom-button {
-  outline: none;
+.general-button {
   min-width: 160px;
   width: 180px;
   height: 60px;
@@ -17,6 +16,27 @@ $yellow: #f5c000;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.25s ease;
+
+  &.header-order-button {
+    position: absolute;
+    right: 30px;
+  }
+
+  &.close-button {
+    position: static;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    color: grey;
+    border-color: grey;
+
+    &:hover {
+      background: grey;
+      color: rgba(224,224,224,0.5);
+      border-color: grey;
+    }
+  }
 
   &:hover {
     background: $yellow;
@@ -40,3 +60,5 @@ $yellow: #f5c000;
     }
   }
 }
+
+
