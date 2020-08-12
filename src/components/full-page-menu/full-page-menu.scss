@@ -1,0 +1,25 @@
+.full-page-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: -1;
+
+  .menu-option:first-child {
+    margin-top:130px;
+  }
+
+  .menu-option {
+    font-size: x-large;
+    width: 40%;
+    padding: 20px;
+    border-bottom: 2px solid white;
+    z-index: 1;
+  }
+}

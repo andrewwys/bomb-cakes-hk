@@ -20,6 +20,8 @@ $yellow: #f5c000;
   &.header-order-button {
     position: absolute;
     right: 30px;
+    width: 12.8%;
+    min-width: 150px;
   }
 
   &.close-button {
@@ -39,15 +41,15 @@ $yellow: #f5c000;
   }
 
   &:hover {
-    background: $yellow;
+    background: white;
     color: black;
-    border-color: $yellow;
+    border-color: white;
   }
 
   &:active {
-    background: #b59953;
-    border-color: #b59953;
-    padding-top: 3px;
+    background: gray;
+    border-color: gray;
+    padding: 3px 0 0 2px;
   }
 
   &.google-sign-in {

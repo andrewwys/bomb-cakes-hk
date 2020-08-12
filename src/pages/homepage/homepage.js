@@ -17,31 +17,42 @@ const contentFaq = [
   'Actual cake may look slightly different from the picture due to each designer’s techniques and materials available.'
 ]
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 const HomePage = () => {
+
+  const productEl = React.useRef(null);
+
   return(  
     <div className='homepage'>
-      <div className='cover-area'
-           style={{
-              backgroundImage : `url(${backgroundImage})`,
-              marginBottom: '40px',
-              display: 'block',
-              zIndex: 0,
-              height: '100vh',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: '50% 80%'
-            }}
+      <div 
+        className='cover-area'
+        onClick={ () => scrollToRef(productEl) }
+        style={{
+          backgroundImage : `url(${backgroundImage})`,
+          marginBottom: '40px',
+          display: 'block',
+          zIndex: 0,
+          height: '100vh',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: '50% 80%'
+        }}
       >
         {/* <div className='cover-image'></div> */}
         {/* <CallForAction /> */}
       </div>
-      <div className='slider-container'>
-        <SimpleSlider />
+      <div 
+        className='slider-container'
+        ref={ productEl }
+      >
+      <SimpleSlider />
       </div>
       <InfoSection 
         title='FAQ'
         image={ imageFaq }
         content={ contentFaq }
+        imageOnRight
       />
       {/* <ModalBox show={true} /> */}
     </div>
