@@ -5,8 +5,9 @@ import InfoSection from '../../components/info-section/info-section';
 // import ModalBox from '../../components/modal-box/modal-box';
 
 import './homepage.scss';
-import backgroundImage from '../../assets/images/full-screen-background-cake-001.jpg';
+//import backgroundImage from '../../assets/images/full-screen-background-cake-001.jpg';
 import imageFaq from '../../assets/images/cake-icon-yellow.JPG';
+import coverVideo from  '../../assets/images/LANDINGPAGE_Video_7_MB.MOV.mp4';
 
 const contentFaq = [
   'Each cake is handcrafted, orders require at-least 7 days in advance notice. The 7day advance begins when payment is received.',
@@ -25,7 +26,7 @@ const HomePage = () => {
 
   return(  
     <div className='homepage'>
-      <div 
+      {/* <div 
         className='cover-area'
         onClick={ () => scrollToRef(productEl) }
         style={{
@@ -38,10 +39,18 @@ const HomePage = () => {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: '50% 80%'
         }}
+      > 
+      </div>*/}
+      <video 
+          className='cover-area'
+          autoPlay
+          loop
+          muted
       >
+        <source src={coverVideo} type='video/mp4'/>
+      </video>
         {/* <div className='cover-image'></div> */}
         {/* <CallForAction /> */}
-      </div>
       <div 
         className='slider-container'
         ref={ productEl }
