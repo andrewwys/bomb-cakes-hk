@@ -4,16 +4,27 @@ import CustomButton from '../custom-button/custom-button';
 
 import './full-page-menu.scss';
 
-const FullPageMenu = () => (
+const FullPageMenu = ({ scrollToRef, pageRef, toggleMenuDisplay }) => {
+
+  const handleMenuClick = (item) => {
+    scrollToRef(item);
+    toggleMenuDisplay();
+  }
+
+  return (
     <div className='full-page-menu'>
-      <div className='menu-option'>
-        PRODUCTS
+      <div 
+        className='menu-option'
+        onClick={ () => handleMenuClick(pageRef.products) }
+      >  PRODUCTS
       </div>
       <div className='menu-option'>
         ABOUT
       </div>
-      <div className='menu-option'>
-        FAQ
+      <div 
+        className='menu-option'
+        onClick={ () => handleMenuClick(pageRef.faq) }
+      > FAQ
       </div>
       <div className='menu-option'>
         LOCATION
@@ -23,6 +34,6 @@ const FullPageMenu = () => (
       > ORDER NOW
       </CustomButton> */}
     </div>
-);
+)};
 
 export default FullPageMenu;

@@ -7,7 +7,7 @@ import InfoSection from '../../components/info-section/info-section';
 import './homepage.scss';
 //import backgroundImage from '../../assets/images/full-screen-background-cake-001.jpg';
 import imageFaq from '../../assets/images/cake-icon-yellow.JPG';
-import coverVideo from  '../../assets/images/LANDINGPAGE_Video_7_MB.MOV.mp4';
+import coverVideo from  '../../assets/images/LANDINGPAGE_Video.mp4';
 
 const contentFaq = [
   'Each cake is handcrafted, orders require at-least 7 days in advance notice. The 7day advance begins when payment is received.',
@@ -18,14 +18,16 @@ const contentFaq = [
   'Actual cake may look slightly different from the picture due to each designer’s techniques and materials available.'
 ]
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-const HomePage = () => {
+const HomePage = (props) => {
 
-  const productEl = React.useRef(null);
+  // Reference point objects for page scroll 
+  props.pageRef.products = React.useRef(null); 
+  props.pageRef.faq = React.useRef(null);
 
   return(  
     <div className='homepage'>
+
       {/* <div 
         className='cover-area'
         onClick={ () => scrollToRef(productEl) }
@@ -41,27 +43,24 @@ const HomePage = () => {
         }}
       > 
       </div>*/}
-      <video 
-          className='cover-area'
-          autoPlay
-          loop
-          muted
-      >
+
+      <video className='cover-area' autoPlay loop muted playsInline>
         <source src={coverVideo} type='video/mp4'/>
       </video>
         {/* <div className='cover-image'></div> */}
         {/* <CallForAction /> */}
       <div 
         className='slider-container'
-        ref={ productEl }
+        ref={ props.pageRef.products }
       >
       <SimpleSlider />
       </div>
+      <span ref={ props.pageRef.faq }></span>
       <InfoSection 
         title='FAQ'
         image={ imageFaq }
         content={ contentFaq }
-        imageOnRight
+        // imageOnRight    // set image on right
       />
       {/* <ModalBox show={true} /> */}
     </div>

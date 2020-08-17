@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useRef } from 'react';
 import './App.css';
 import HomePage from './pages/homepage/homepage';
 import Header from './components/header/header';
@@ -18,13 +18,16 @@ const FontSwitch = (props) => {
   );
 }
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
-      //These states are used for Font Switch only
-      chosenFont: "Mulish",
-      fontSize: 19
+      chosenFont: "Mulish", // for Font Switch only
+      fontSize: 19,  // for Font Switch only
+      pageRef: {  // storing the page reference for menu links to scroll down
+        products: null,
+        faq: null
+      }
     };
   }
 
@@ -57,8 +60,8 @@ class App extends React.Component {
           fontSize: this.state.fontSize+"px" // 19
         }}
       >
-        <Header />
-        <HomePage />
+        <Header pageRef={this.state.pageRef} />
+        <HomePage pageRef={this.state.pageRef} />
         <FontSwitch 
           changeFont={this.changeFont}
           incrementFontSize={this.incrementFontSize} 

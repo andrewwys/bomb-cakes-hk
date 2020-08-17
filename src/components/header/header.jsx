@@ -1,4 +1,4 @@
-import React, { useRef, Component } from 'react';
+import React, { Component } from 'react';
 
 import CustomButton from '../custom-button/custom-button';
 import ModalBox from '../modal-box/modal-box';
@@ -9,8 +9,8 @@ import './header.scss';
 import logo from '../../assets/images/logo-white.png';
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       backgroundOpacity: 0,
@@ -71,12 +71,9 @@ class Header extends Component {
     }
   }
 
-  // scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) 
+  scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop-105) 
 
   render() {
-    // const myRef = useRef(null);
-    // const executeScroll = () => this.scrollToRef(myRef);
-
     return(
       <nav 
         className='header' 
@@ -92,8 +89,10 @@ class Header extends Component {
           <div className="bar3"></div>
         </div>
         <div className='option-wrapper'>
-          <div className='option'>
-            PRODUCTS
+          <div 
+            className='option'
+            onClick={ () => this.scrollToRef(this.props.pageRef.products) }
+          > PRODUCTS
           </div>
           <div className='option'>
             ABOUT
@@ -101,8 +100,10 @@ class Header extends Component {
           <div className='logo-container'>
             <img className='logo' src={logo} alt='logo'/>
           </div>
-          <div className='option'>
-            FAQ
+          <div 
+            className='option'
+            onClick={ () => this.scrollToRef(this.props.pageRef.faq) }
+          > FAQ
           </div>
           <div className='option'>
             LOCATION
@@ -118,7 +119,14 @@ class Header extends Component {
           handleClose={this.closeOrderModalBox}
         > content content 
         </ModalBox>
-        { this.state.fullPageMenuVisible ? <FullPageMenu /> : null }
+        { this.state.fullPageMenuVisible 
+          ? <FullPageMenu 
+              scrollToRef={this.scrollToRef}
+              pageRef={this.props.pageRef}
+              toggleMenuDisplay={this.toggleMenuDisplay}
+            /> 
+          : null 
+        }
       </nav>
     )
   }
