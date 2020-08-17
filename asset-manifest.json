@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bomb-cakes-hk/static/css/main.bf777025.chunk.css",
-    "main.js": "/bomb-cakes-hk/static/js/main.ef21fb48.chunk.js",
-    "main.js.map": "/bomb-cakes-hk/static/js/main.ef21fb48.chunk.js.map",
+    "main.js": "/bomb-cakes-hk/static/js/main.a9e611c6.chunk.js",
+    "main.js.map": "/bomb-cakes-hk/static/js/main.a9e611c6.chunk.js.map",
     "runtime-main.js": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js",
     "runtime-main.js.map": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js.map",
     "static/css/2.8a960da2.chunk.css": "/bomb-cakes-hk/static/css/2.8a960da2.chunk.css",
     "static/js/2.801ceb11.chunk.js": "/bomb-cakes-hk/static/js/2.801ceb11.chunk.js",
     "static/js/2.801ceb11.chunk.js.map": "/bomb-cakes-hk/static/js/2.801ceb11.chunk.js.map",
     "index.html": "/bomb-cakes-hk/index.html",
-    "precache-manifest.6df93cc8545aedcf67cd104ebc765ad7.js": "/bomb-cakes-hk/precache-manifest.6df93cc8545aedcf67cd104ebc765ad7.js",
+    "precache-manifest.dcffdce18d84220c22f87119d839720c.js": "/bomb-cakes-hk/precache-manifest.dcffdce18d84220c22f87119d839720c.js",
     "service-worker.js": "/bomb-cakes-hk/service-worker.js",
     "static/css/2.8a960da2.chunk.css.map": "/bomb-cakes-hk/static/css/2.8a960da2.chunk.css.map",
     "static/css/main.bf777025.chunk.css.map": "/bomb-cakes-hk/static/css/main.bf777025.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.8a960da2.chunk.css",
     "static/js/2.801ceb11.chunk.js",
     "static/css/main.bf777025.chunk.css",
-    "static/js/main.ef21fb48.chunk.js"
+    "static/js/main.a9e611c6.chunk.js"
   ]
 }
