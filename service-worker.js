@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bomb-cakes-hk/precache-manifest.dcffdce18d84220c22f87119d839720c.js"
+  "/bomb-cakes-hk/precache-manifest.6eaf4bc6978eb52f844c24a3a68cc7ac.js"
 );
 
 self.addEventListener('message', (event) => {
