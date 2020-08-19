@@ -1,7 +1,8 @@
 import React from 'react';
 //import CallForAction from '../../components/call-for-action/call-for-action';
-import SimpleSlider from '../../components/slider/simpleSlider';
+//import SimpleSlider from '../../components/slider/simpleSlider';
 import InfoSection from '../../components/info-section/info-section';
+import ProductSlider from '../../components/slider/productSlider';
 // import ModalBox from '../../components/modal-box/modal-box';
 
 import './homepage.scss';
@@ -53,7 +54,7 @@ const HomePage = (props) => {
         className='slider-container'
         ref={ props.pageRef.products }
       >
-      <SimpleSlider />
+      <ProductSlider />
       </div>
       <span ref={ props.pageRef.faq }></span>
       <InfoSection 

@@ -89,25 +89,25 @@ class Header extends Component {
           <div className="bar3"></div>
         </div>
         <div className='option-wrapper'>
-          <div 
+          {/* <div 
             className='option'
             onClick={ () => this.scrollToRef(this.props.pageRef.products) }
           > PRODUCTS
           </div>
           <div className='option'>
             ABOUT
-          </div>
+          </div> */}
           <div className='logo-container'>
             <img className='logo' src={logo} alt='logo'/>
           </div>
-          <div 
+          {/* <div 
             className='option'
             onClick={ () => this.scrollToRef(this.props.pageRef.faq) }
           > FAQ
           </div>
           <div className='option'>
             LOCATION
-          </div>
+          </div> */}
         </div>        
         {/* <CustomButton 
           buttonClassName='header-order-button'

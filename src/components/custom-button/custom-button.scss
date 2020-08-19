@@ -61,6 +61,24 @@ $yellow: #f5c000;
       border: none;
     }
   }
+
+  &.order-product {
+      box-shadow: 1px 1px #000000;
+      text-shadow: 1px 1px #000000;
+
+      &:hover {
+        background-color: #fff2cc;
+        border-color: #fff2cc;
+        box-shadow: none;
+        text-shadow: none;
+        color: #735400;
+
+      }
+      &:active {
+        transform: translate(2px,2px);
+      }
+    
+  }
 }
 
 
