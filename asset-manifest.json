@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/bomb-cakes-hk/static/css/main.0165427d.chunk.css",
-    "main.js": "/bomb-cakes-hk/static/js/main.da8462f9.chunk.js",
-    "main.js.map": "/bomb-cakes-hk/static/js/main.da8462f9.chunk.js.map",
+    "main.css": "/bomb-cakes-hk/static/css/main.b1f07047.chunk.css",
+    "main.js": "/bomb-cakes-hk/static/js/main.dc727339.chunk.js",
+    "main.js.map": "/bomb-cakes-hk/static/js/main.dc727339.chunk.js.map",
     "runtime-main.js": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js",
     "runtime-main.js.map": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js.map",
-    "static/js/2.160efbec.chunk.js": "/bomb-cakes-hk/static/js/2.160efbec.chunk.js",
-    "static/js/2.160efbec.chunk.js.map": "/bomb-cakes-hk/static/js/2.160efbec.chunk.js.map",
+    "static/js/2.f1757fac.chunk.js": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js",
+    "static/js/2.f1757fac.chunk.js.map": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js.map",
     "index.html": "/bomb-cakes-hk/index.html",
-    "precache-manifest.6eaf4bc6978eb52f844c24a3a68cc7ac.js": "/bomb-cakes-hk/precache-manifest.6eaf4bc6978eb52f844c24a3a68cc7ac.js",
+    "precache-manifest.0d7e8bedc8db69414320e64c57945ad7.js": "/bomb-cakes-hk/precache-manifest.0d7e8bedc8db69414320e64c57945ad7.js",
     "service-worker.js": "/bomb-cakes-hk/service-worker.js",
-    "static/css/main.0165427d.chunk.css.map": "/bomb-cakes-hk/static/css/main.0165427d.chunk.css.map",
-    "static/js/2.160efbec.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.160efbec.chunk.js.LICENSE.txt",
+    "static/css/main.b1f07047.chunk.css.map": "/bomb-cakes-hk/static/css/main.b1f07047.chunk.css.map",
+    "static/js/2.f1757fac.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js.LICENSE.txt",
     "static/media/LANDINGPAGE_Video.mp4": "/bomb-cakes-hk/static/media/LANDINGPAGE_Video.609c675a.mp4",
     "static/media/cake-icon-yellow.JPG": "/bomb-cakes-hk/static/media/cake-icon-yellow.58faf5b9.JPG",
     "static/media/product-chocolate-cake.jpg": "/bomb-cakes-hk/static/media/product-chocolate-cake.c25fa56a.jpg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a467b019.js",
-    "static/js/2.160efbec.chunk.js",
-    "static/css/main.0165427d.chunk.css",
-    "static/js/main.da8462f9.chunk.js"
+    "static/js/2.f1757fac.chunk.js",
+    "static/css/main.b1f07047.chunk.css",
+    "static/js/main.dc727339.chunk.js"
   ]
 }
