@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import CustomButton from '../custom-button/custom-button';
-import ModalBox from '../modal-box/modal-box';
+// import CustomButton from '../custom-button/custom-button';
+// import ModalBox from '../modal-box/modal-box';
 import FullPageMenu from '../full-page-menu/full-page-menu';
 
 import './header.scss';
@@ -14,7 +14,7 @@ class Header extends Component {
 
     this.state = {
       backgroundOpacity: 0,
-      orderModalBoxVisible: false, 
+      // orderModalBoxVisible: false, 
       fullPageMenuVisible: false
     };
   }
@@ -40,16 +40,16 @@ class Header extends Component {
     }
   }
 
-  showOrderModalBox = () => {
-    this.setState({ orderModalBoxVisible: true});
-  }
+  // showOrderModalBox = () => {
+  //   this.setState({ orderModalBoxVisible: true});
+  // }
 
-  closeOrderModalBox = (event) => {
-    const closeBox = event.target.id;
-    if (closeBox === 'modalBackground' || closeBox === 'closeButton') {
-      this.setState({ orderModalBoxVisible: false});
-    }
-  }
+  // closeOrderModalBox = (event) => {
+  //   const closeBox = event.target.id;
+  //   if (closeBox === 'modalBackground' || closeBox === 'closeButton') {
+  //     this.setState({ orderModalBoxVisible: false});
+  //   }
+  // }
 
   toggleMenuDisplay = () => {
     // then displaying the full page menu, there are 3 changes on the screen:
@@ -114,11 +114,13 @@ class Header extends Component {
           onClick={this.showOrderModalBox}
         > ORDER NOW
         </CustomButton> */}
-        <ModalBox 
+
+        {/* <ModalBox 
           show={this.state.orderModalBoxVisible} 
           handleClose={this.closeOrderModalBox}
         > content content 
-        </ModalBox>
+        </ModalBox> */}
+
         { this.state.fullPageMenuVisible 
           ? <FullPageMenu 
               scrollToRef={this.scrollToRef}

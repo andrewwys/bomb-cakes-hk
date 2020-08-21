@@ -10,6 +10,10 @@
   height: 100vh;
   background: black;
   z-index: -1;
+  -webkit-animation-name: slide;
+  -webkit-animation-duration: 1s;
+  animation-name: slide;
+  animation-duration: 1s;
 
   .menu-option:first-child {
     margin-top:130px;
@@ -21,5 +25,33 @@
     padding: 20px;
     border-bottom: 2px solid white;
     z-index: 1;
+    transition: font-size 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      font-size: xx-large;
+    }
+  }
+}
+
+@-webkit-keyframes slide {
+  0% { 
+    top: -200px;
+    opacity: 0;
+  }
+  100% { 
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  0% { 
+    top: -200px;
+    opacity: 0;
+  }
+  100% { 
+    top: 0;
+    opacity: 1;
   }
 }

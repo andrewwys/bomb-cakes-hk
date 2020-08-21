@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CustomButton from '../custom-button/custom-button';
+// import CustomButton from '../custom-button/custom-button';
 
 import './full-page-menu.scss';
 
