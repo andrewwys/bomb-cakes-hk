@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/bomb-cakes-hk/static/css/main.b1f07047.chunk.css",
-    "main.js": "/bomb-cakes-hk/static/js/main.dc727339.chunk.js",
-    "main.js.map": "/bomb-cakes-hk/static/js/main.dc727339.chunk.js.map",
+    "main.css": "/bomb-cakes-hk/static/css/main.83f17a99.chunk.css",
+    "main.js": "/bomb-cakes-hk/static/js/main.86e2ce38.chunk.js",
+    "main.js.map": "/bomb-cakes-hk/static/js/main.86e2ce38.chunk.js.map",
     "runtime-main.js": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js",
     "runtime-main.js.map": "/bomb-cakes-hk/static/js/runtime-main.a467b019.js.map",
-    "static/js/2.f1757fac.chunk.js": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js",
-    "static/js/2.f1757fac.chunk.js.map": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js.map",
+    "static/js/2.b0c0024b.chunk.js": "/bomb-cakes-hk/static/js/2.b0c0024b.chunk.js",
+    "static/js/2.b0c0024b.chunk.js.map": "/bomb-cakes-hk/static/js/2.b0c0024b.chunk.js.map",
     "index.html": "/bomb-cakes-hk/index.html",
-    "precache-manifest.0d7e8bedc8db69414320e64c57945ad7.js": "/bomb-cakes-hk/precache-manifest.0d7e8bedc8db69414320e64c57945ad7.js",
+    "precache-manifest.fb99389ff7a91fef7864a7405e3f5562.js": "/bomb-cakes-hk/precache-manifest.fb99389ff7a91fef7864a7405e3f5562.js",
     "service-worker.js": "/bomb-cakes-hk/service-worker.js",
-    "static/css/main.b1f07047.chunk.css.map": "/bomb-cakes-hk/static/css/main.b1f07047.chunk.css.map",
-    "static/js/2.f1757fac.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js.LICENSE.txt",
+    "static/css/main.83f17a99.chunk.css.map": "/bomb-cakes-hk/static/css/main.83f17a99.chunk.css.map",
+    "static/js/2.b0c0024b.chunk.js.LICENSE.txt": "/bomb-cakes-hk/static/js/2.b0c0024b.chunk.js.LICENSE.txt",
     "static/media/LANDINGPAGE_Video.mp4": "/bomb-cakes-hk/static/media/LANDINGPAGE_Video.609c675a.mp4",
     "static/media/cake-icon-yellow.JPG": "/bomb-cakes-hk/static/media/cake-icon-yellow.58faf5b9.JPG",
+    "static/media/product-chestnut-cake.jpg": "/bomb-cakes-hk/static/media/product-chestnut-cake.c1f1d5fb.jpg",
     "static/media/product-chocolate-cake.jpg": "/bomb-cakes-hk/static/media/product-chocolate-cake.c25fa56a.jpg",
     "static/media/product-vanilla-cake.jpg": "/bomb-cakes-hk/static/media/product-vanilla-cake.8d46c63d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a467b019.js",
-    "static/js/2.f1757fac.chunk.js",
-    "static/css/main.b1f07047.chunk.css",
-    "static/js/main.dc727339.chunk.js"
+    "static/js/2.b0c0024b.chunk.js",
+    "static/css/main.83f17a99.chunk.css",
+    "static/js/main.86e2ce38.chunk.js"
   ]
 }

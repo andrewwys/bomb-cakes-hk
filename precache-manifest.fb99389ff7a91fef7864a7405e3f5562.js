@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "45ba8da09f38051a01b340584b1215e0",
+    "revision": "c3322aaa4c4195f0eb41e05679fcf807",
     "url": "/bomb-cakes-hk/index.html"
   },
   {
-    "revision": "38e57ca497f0e3f960aa",
-    "url": "/bomb-cakes-hk/static/css/main.b1f07047.chunk.css"
+    "revision": "f206b5c7ab65f57c0217",
+    "url": "/bomb-cakes-hk/static/css/main.83f17a99.chunk.css"
   },
   {
-    "revision": "ab477363b364177761f1",
-    "url": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js"
+    "revision": "0d02e9ce477f66052c4b",
+    "url": "/bomb-cakes-hk/static/js/2.b0c0024b.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/bomb-cakes-hk/static/js/2.f1757fac.chunk.js.LICENSE.txt"
+    "revision": "c64c486544348f10a6d6c716950bc223",
+    "url": "/bomb-cakes-hk/static/js/2.b0c0024b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "38e57ca497f0e3f960aa",
-    "url": "/bomb-cakes-hk/static/js/main.dc727339.chunk.js"
+    "revision": "f206b5c7ab65f57c0217",
+    "url": "/bomb-cakes-hk/static/js/main.86e2ce38.chunk.js"
   },
   {
     "revision": "889befd8d9dbe33bf562",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "58faf5b9f85e612e524bad10b7af8eb0",
     "url": "/bomb-cakes-hk/static/media/cake-icon-yellow.58faf5b9.JPG"
+  },
+  {
+    "revision": "c1f1d5fb927fb58404688617ee3cb800",
+    "url": "/bomb-cakes-hk/static/media/product-chestnut-cake.c1f1d5fb.jpg"
   },
   {
     "revision": "c25fa56afb0a427aa08e924b5bb55aac",
