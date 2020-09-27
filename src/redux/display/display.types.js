@@ -1,6 +1,8 @@
 const displayActionTypes = {
   TOGGLE_ORDER_MODE: 'TOGGLE_ORDER_MODE',
   TURN_OFF_ORDER_MODE: 'TURN_OFF_ORDER_MODE',
+  UPDATE_OPTION_ON_HOVER: 'UPDATE_OPTION_ON_HOVER',
+  SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
 };
 
 export default displayActionTypes;

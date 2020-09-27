@@ -1,0 +1,43 @@
+.cart-item-wrapper {
+  width: 100%;
+  display: block;
+  .checkout {
+    margin: 10px 0;
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 5px;
+
+    .header-child {
+      text-align: center;
+      font-size: 0.8rem;
+      color: grey;
+    }
+
+    .header-img {
+      width: 20%;
+    }
+    .header-item {
+      width: 40%;
+      text-align: left;
+    }
+    .header-qty {
+      width: 20%;
+    }
+    .header-price {
+      width: 20%;
+    }
+  }
+  .no-cart-item {
+    width: 100%;
+    text-align: center;
+    border: 1px solid grey;
+    color: grey;
+    font-size: 0.9rem;
+    padding: 30px 0;
+  }
+}

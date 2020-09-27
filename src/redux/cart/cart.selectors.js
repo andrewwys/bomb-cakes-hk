@@ -2,7 +2,19 @@ import { createSelector } from 'reselect';
 
 const selectCart = (state) => state.cart;
 
-export const selectCartItems = createSelector(
+export const selectNewItem = createSelector(
   [selectCart],
-  (cart) => cart.cartItems
+  (cart) => cart.newItem
 );
+
+export const selectAmount = createSelector([selectNewItem], (item) => {
+  return item.amount;
+});
+
+export const selectMessage = createSelector([selectNewItem], (item) => {
+  return item.message;
+});
+
+export const selectProductData = createSelector([selectNewItem], (item) => {
+  return item.productData;
+});

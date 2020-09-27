@@ -1,9 +1,11 @@
+import { setCurrentPage } from './display.actions';
 import displayActionTypes from './display.types';
 
 const INITIAL_STATE = {
   currentProductOptions: [],
   orderMode: false,
-  currentPage: '',
+  currentPage: 'PRODUCT_MENU',
+  optionOnHover: null,
 };
 
 const displayReducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +19,16 @@ const displayReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         orderMode: false,
+      };
+    case displayActionTypes.UPDATE_OPTION_ON_HOVER:
+      return {
+        ...state,
+        optionOnHover: action.payload,
+      };
+    case displayActionTypes.SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
     default:
       return state;

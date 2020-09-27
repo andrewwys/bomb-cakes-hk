@@ -1,0 +1,106 @@
+.container {
+  width: 95%;
+  height: 95%;
+  margin: 20px auto;
+  cursor: default;
+
+  .product-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1.5rem;
+      color: #f9dc5c;
+      margin-right: 20px;
+    }
+
+    .navigate-products {
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+
+      .prev-product,
+      .next-product {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .product-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    .product-img {
+      height: 0;
+      width: 45%;
+      min-width: 320px;
+      padding-top: 45%;
+      background-position: 50% 80%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 20px;
+
+      @media screen and (max-width: 990px) {
+        width: 80%;
+        padding-top: 80%;
+        height: 0;
+      }
+    }
+    .product-options {
+      width: 50%;
+      min-width: 320px;
+
+      .product-order-form {
+        margin: 10px 0;
+        font-size: 0.9rem;
+        .label {
+          font-weight: normal;
+          font-size: 1rem;
+          margin: 2px 0;
+        }
+        .cake-msg-input {
+          background: none;
+          background-color: black;
+          color: white;
+          display: block;
+          font-size: 1rem;
+          width: 60%;
+          height: auto;
+          border: 1px solid #3a3a3a;
+          border-radius: 0;
+          margin: 5px 0;
+        }
+      }
+
+      .clear {
+        font-size: 1rem;
+        text-decoration: underline;
+        cursor: pointer;
+        color: #a3a3a3;
+      }
+
+      .summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        width: 90%;
+        background-color: #3a3a3a;
+        margin: 20px 0 50px 0;
+
+        .amount {
+          margin-left: 10px;
+        }
+      }
+
+      @media screen and (max-width: 990px) {
+        width: 90%;
+      }
+    }
+  }
+}

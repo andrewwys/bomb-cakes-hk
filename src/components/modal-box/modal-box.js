@@ -7,19 +7,20 @@ import CustomButton from '../custom-button/custom-button';
 import './modal-box.scss';
 
 import { selectOrderMode } from '../../redux/display/display.selectors';
-import { toggleOrderMode } from '../../redux/display/display.actions';
+// import { toggleOrderMode } from '../../redux/display/display.actions';
 import { turnOffOrderMode } from '../../redux/display/display.actions';
 
-const ModalBox = ({ toggleOrderMode, children, orderMode }) => {
+const ModalBox = ({
+  // toggleOrderMode,
+  turnOffOrderMode,
+  children,
+  orderMode,
+}) => {
   const showClassName = orderMode ? 'display-ui' : 'display-none';
-  console.log('orderMode is ', orderMode);
+  // console.log('orderMode is ', orderMode);
 
   return (
-    <div
-      className={`modal-background ${showClassName}`}
-      id='modalBackground'
-      onClick={() => toggleOrderMode()}
-    >
+    <div className={`modal-background ${showClassName}`} id='modalBackground'>
       <div className='modal-main'>
         <div className='button-container'>
           <CustomButton
@@ -31,7 +32,6 @@ const ModalBox = ({ toggleOrderMode, children, orderMode }) => {
             X{' '}
           </CustomButton>
         </div>
-
         {children}
       </div>
     </div>
@@ -43,7 +43,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleOrderMode: () => dispatch(toggleOrderMode()),
+  // toggleOrderMode: () => dispatch(toggleOrderMode()),
   turnOffOrderMode: () => dispatch(turnOffOrderMode()),
 });
 

@@ -1,52 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleOrderMode } from '../../redux/display/display.actions';
+import {
+  setCurrentPage,
+  toggleOrderMode,
+} from '../../redux/display/display.actions';
 
 import CustomButton from '../custom-button/custom-button';
 
 import './productSlider.scss';
 
-import vanillaCakeImage from '../../assets/images/product-vanilla-cake.jpg';
-import chocolateCakeImage from '../../assets/images/product-chocolate-cake.jpg';
-
-const sampleText =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-
-const products = [
-  {
-    id: 0,
-    title1: 'Chocolate',
-    title2: 'Dream',
-    desc: sampleText,
-    button: 'Order Now!',
-    image: chocolateCakeImage,
-  },
-  {
-    id: 1,
-    title1: 'Vanilla',
-    title2: 'Dream',
-    desc: sampleText,
-    button: 'Order Now!',
-    image: vanillaCakeImage,
-  },
-  {
-    id: 2,
-    title1: 'Swiss',
-    title2: 'Roll',
-    desc: sampleText,
-    button: 'Order Now!',
-    image: chocolateCakeImage,
-  },
-  {
-    id: 3,
-    title1: 'Feeling',
-    title2: 'Lucky',
-    desc: sampleText,
-    button: 'Try Me!',
-    image: vanillaCakeImage,
-  },
-];
+import { PRODUCT_DATA } from '../../product.data';
+import { setProductData } from '../../redux/cart/cart.actions';
 
 class ProductSlider extends Component {
   constructor(props) {
@@ -80,7 +45,12 @@ class ProductSlider extends Component {
 
   renderSlide = (product) => {
     const { title1, title2, desc, id, image, button } = product;
-    const { toggleOrderMode } = this.props;
+    const { toggleOrderMode, setCurrentPage, setProductData } = this.props;
+    const handleClick = () => {
+      setProductData(product);
+      toggleOrderMode();
+      setCurrentPage('PRODUCT_MENU');
+    };
     return (
       <div
         className='slide'
@@ -94,10 +64,7 @@ class ProductSlider extends Component {
             {title2}
           </h1>
           <p>{desc}</p>
-          <CustomButton
-            buttonClassName='order-product'
-            onClick={() => toggleOrderMode()}
-          >
+          <CustomButton buttonClassName='order-product' onClick={handleClick}>
             {button}
           </CustomButton>
         </div>
@@ -110,7 +77,7 @@ class ProductSlider extends Component {
     const activeProducts = [];
     // adding products to activeProducts for displayed on screen
     for (let i = 0; i < this.state.numOfSlides; i++) {
-      activeProducts.push(products[(slideCount + i) % products.length]);
+      activeProducts.push(PRODUCT_DATA[(slideCount + i) % PRODUCT_DATA.length]);
     }
 
     return activeProducts.map((product) => this.renderSlide(product));
@@ -123,7 +90,7 @@ class ProductSlider extends Component {
       this.setState({ slideCount: slideCount + increment });
     } else if (event.target.id === 'prev') {
       if (slideCount <= increment - 1) {
-        this.setState({ slideCount: products.length - increment });
+        this.setState({ slideCount: PRODUCT_DATA.length - increment });
       } else {
         this.setState({ slideCount: slideCount - increment });
       }
@@ -131,7 +98,7 @@ class ProductSlider extends Component {
   };
 
   productIdIsActive = (pid) => {
-    const len = products.length; // no. of items in the product list
+    const len = PRODUCT_DATA.length; // no. of items in the product list
     const slideCount = this.state.slideCount % len; // current count mod len = lowest id of active items
     const numOfSlides = this.state.numOfSlides; // total number of active slides
     if (pid >= slideCount && pid <= slideCount + numOfSlides - 1) {
@@ -142,7 +109,7 @@ class ProductSlider extends Component {
   };
 
   renderDots = () => {
-    return products.map((p) => (
+    return PRODUCT_DATA.map((p) => (
       <div
         className={`dot ${this.productIdIsActive(p.id) ? 'dot-active' : ''}`}
         id={p.id}
@@ -177,6 +144,8 @@ class ProductSlider extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  setCurrentPage: (page) => dispatch(setCurrentPage(page)),
+  setProductData: (product) => dispatch(setProductData(product)),
   toggleOrderMode: () => dispatch(toggleOrderMode()),
 });
 
