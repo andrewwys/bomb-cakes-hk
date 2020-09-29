@@ -95,6 +95,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: newCartItemsAfterIncrement(state.cartItems, action.payload),
       };
+
+    // :::: Actions related to ORDER DETAILS ::::
+    case CartActionTypes.SET_PICKUP_DATE:
+      return {
+        ...state,
+        pickupDate: action.payload,
+      };
     default:
       return state;
   }

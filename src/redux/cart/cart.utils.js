@@ -10,6 +10,8 @@ export const editCakeProp = (id) => {
       return 'toppings';
     case 4:
       return 'decorations';
+    default:
+      return '';
   }
 };
 
@@ -24,7 +26,7 @@ export const loadProductData = (currentProductId, increment) => {
 };
 
 export const newCartItemsAfterRemoving = (cartItems, payload) => {
-  return cartItems.filter((cartItem) => cartItem != payload);
+  return cartItems.filter((cartItem) => cartItem !== payload);
 };
 
 export const newCartItemsAfterIncrement = (cartItems, payload) => {

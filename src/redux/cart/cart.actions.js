@@ -56,3 +56,10 @@ export const incrementQty = (cartItem) => ({
   type: CartActionTypes.INCREMENT_QTY,
   payload: cartItem,
 });
+
+//Below are actions related to ORDER DETAILS:
+
+export const setPickupDate = (date) => ({
+  type: CartActionTypes.SET_PICKUP_DATE,
+  payload: date,
+});

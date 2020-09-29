@@ -160,3 +160,26 @@ export const PRODUCT_OPTIONS = [
     ],
   },
 ];
+
+export const ORDER_DETAILS = [
+  {
+    id: 1000,
+    optionName: 'Accessories',
+    optionCode: 'accessories',
+    limit: 0,
+    optionValues: [
+      {
+        id: 1001,
+        name: 'Candles',
+        extraCost: 0,
+        image: optionStrawberry,
+      },
+      {
+        id: 1002,
+        name: 'Cutlery',
+        extraCost: 0,
+        image: optionStrawberry,
+      },
+    ],
+  },
+];

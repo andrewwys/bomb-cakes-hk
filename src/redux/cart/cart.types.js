@@ -14,6 +14,9 @@ const CartActionTypes = {
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   REDUCE_QTY: 'REDUCE_QTY',
   INCREMENT_QTY: 'INCREMENT_QTY',
+
+  //Below are actions related to ORDER DETAILS:
+  SET_PICKUP_DATE: 'SET_PICKUP_DATE',
 };
 
 export default CartActionTypes;
