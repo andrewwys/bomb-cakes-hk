@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eeb84633e9f7a235c85c38b9768bb8ed",
+    "revision": "b3c24efec88df7bb75755f500c0adbe8",
     "url": "/bomb-cakes-hk/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bomb-cakes-hk/static/css/2.19b7558e.chunk.css"
   },
   {
-    "revision": "3f756cd9de2629ee8ccb",
+    "revision": "b9442e51174033559739",
     "url": "/bomb-cakes-hk/static/css/main.6fa7c811.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bomb-cakes-hk/static/js/2.41cca9b8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3f756cd9de2629ee8ccb",
-    "url": "/bomb-cakes-hk/static/js/main.3a663164.chunk.js"
+    "revision": "b9442e51174033559739",
+    "url": "/bomb-cakes-hk/static/js/main.d037163c.chunk.js"
   },
   {
     "revision": "889befd8d9dbe33bf562",
