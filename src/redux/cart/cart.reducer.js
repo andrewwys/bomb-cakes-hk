@@ -1,6 +1,6 @@
 import CartActionTypes from './cart.types';
 import {
-  editCakeProp,
+  getOptionCode,
   loadProductData,
   newCartItemsAfterIncrement,
   newCartItemsAfterReduce,
@@ -10,13 +10,14 @@ import { PRODUCT_DATA } from '../../product.data';
 
 const INITIAL_STATE = {
   cartItems: [],
-  pickupDate: '',
-  pickupTime: '',
+  pickupDate: null,
+  pickupHour: '',
+  pickupMin: '',
   accessories: [],
-  name: 'Sample Customer',
-  phone: '909090909',
-  email: 'customer@gmail.com',
-  comments: 'hahaha',
+  name: '',
+  phone: '',
+  email: '',
+  comments: '',
   newItem: {
     productData: PRODUCT_DATA[0],
     cakeSize: '',
@@ -32,12 +33,12 @@ const INITIAL_STATE = {
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CartActionTypes.EDIT_CAKE_OPTIONS:
-      const cakeProp = editCakeProp(action.payload.id);
+      const cakeProp = getOptionCode(action.payload.id);
       return {
         ...state,
         newItem: {
           ...state.newItem,
-          [`${cakeProp}`]: action.payload.name,
+          [cakeProp]: action.payload.name,
         },
       };
     case CartActionTypes.EDIT_CAKE_MSG:
@@ -100,7 +101,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.SET_PICKUP_DATE:
       return {
         ...state,
-        pickupDate: action.payload,
+        pickupDate: action.payload, //moment object
+      };
+    case CartActionTypes.SET_ORDER_DETAILS:
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value,
+      };
+    case CartActionTypes.EDIT_ORDER_SELECTION:
+      const optionCode = getOptionCode(action.payload.id);
+      return {
+        ...state,
+        [optionCode]: action.payload.name,
       };
     default:
       return state;

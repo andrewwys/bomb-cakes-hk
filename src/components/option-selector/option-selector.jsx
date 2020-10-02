@@ -3,23 +3,40 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import './option-selector.scss';
-import { editCakeOptions } from '../../redux/cart/cart.actions';
+import {
+  editCakeOptions,
+  editOrderSelection,
+} from '../../redux/cart/cart.actions';
 import { updateOptionOnHover } from '../../redux/display/display.actions';
-import { selectNewItem } from '../../redux/cart/cart.selectors';
+import {
+  selectNewItem,
+  selectAccessories,
+} from '../../redux/cart/cart.selectors';
 import { selectOptionOnHover } from '../../redux/display/display.selectors';
-// import {  } from '../../redux/display/display.selectors';
 
 const OptionSelector = ({
   productOption: { id, optionName, optionCode, limit, optionValues },
   editCakeOptions,
+  editOrderSelection,
   updateOptionOnHover,
+  accessories,
   newItem,
   optionOnHover,
 }) => {
+  const isProductOption = id < 999 ? true : false; // is product option or checkout option
   const displayOptionNames = () => {
     if (optionOnHover && Math.floor(optionOnHover.id / 100) * 100 === id) {
       return optionOnHover.name;
-    } else return newItem[optionCode];
+    } else if (isProductOption) return newItem[optionCode];
+    //returns property value in newItem corresponding to optionCode (e.g. newItem.decorations)
+    else return accessories;
+  };
+  const handleClick = (optionValue) => {
+    if (id <= 999) {
+      editCakeOptions(optionValue);
+    } else {
+      editOrderSelection(optionValue);
+    }
   };
   return (
     <div className='option-selector'>
@@ -32,7 +49,9 @@ const OptionSelector = ({
         {optionValues.map((optionValue) => {
           const { image, id, name, ...others } = optionValue;
           const selectedClassName =
-            name === newItem[optionCode] ? 'selected' : '';
+            name === newItem[optionCode] || name === accessories // indicate selection if name of option equals selected in state
+              ? 'selected'
+              : '';
           return (
             <div
               className={`option ${selectedClassName}`} //'option'
@@ -40,7 +59,7 @@ const OptionSelector = ({
                 backgroundImage: `url(${image})`,
               }}
               id={id}
-              onClick={() => editCakeOptions(optionValue)}
+              onClick={() => handleClick(optionValue)}
               onMouseEnter={() => updateOptionOnHover(optionValue)}
               onMouseLeave={() => updateOptionOnHover(null)}
             ></div>
@@ -52,12 +71,14 @@ const OptionSelector = ({
 };
 
 const mapStateToProps = createStructuredSelector({
+  accessories: selectAccessories,
   newItem: selectNewItem,
   optionOnHover: selectOptionOnHover,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  editCakeOptions: (id) => dispatch(editCakeOptions(id)),
+  editCakeOptions: (value) => dispatch(editCakeOptions(value)),
+  editOrderSelection: (value) => dispatch(editOrderSelection(value)),
   updateOptionOnHover: (value) => dispatch(updateOptionOnHover(value)),
 });
 

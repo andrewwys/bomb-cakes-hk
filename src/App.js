@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import './react-dates-overrides.css';
 import './App.css';
 import HomePage from './pages/homepage/homepage';
 import Header from './components/header/header';

@@ -63,3 +63,13 @@ export const setPickupDate = (date) => ({
   type: CartActionTypes.SET_PICKUP_DATE,
   payload: date,
 });
+
+export const setOrderDetails = (input) => ({
+  type: CartActionTypes.SET_ORDER_DETAILS,
+  payload: input,
+});
+
+export const editOrderSelection = (optionValue) => ({
+  type: CartActionTypes.EDIT_ORDER_SELECTION,
+  payload: optionValue,
+});

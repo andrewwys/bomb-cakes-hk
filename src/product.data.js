@@ -36,6 +36,9 @@ export const PRODUCT_DATA = [
   },
 ];
 
+//PRODUCT_OPTIONS are applicable to product menu page. They should have a 3-digit ID no.
+// option category have an ID ends with 00 (e.g. 100, 200)
+// option values ID starts with 101 and so on.
 export const PRODUCT_OPTIONS = [
   {
     id: 100,
@@ -161,6 +164,7 @@ export const PRODUCT_OPTIONS = [
   },
 ];
 
+// Order details are options applicable to checkout pages. They should have a 4-digit ID no.
 export const ORDER_DETAILS = [
   {
     id: 1000,

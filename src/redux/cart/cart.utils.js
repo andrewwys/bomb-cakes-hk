@@ -1,18 +1,14 @@
-import { PRODUCT_DATA } from '../../product.data';
+import {
+  PRODUCT_DATA,
+  PRODUCT_OPTIONS,
+  ORDER_DETAILS,
+} from '../../product.data';
 
-export const editCakeProp = (id) => {
-  switch (Math.floor(id / 100)) {
-    case 1:
-      return 'cakeSize';
-    case 2:
-      return 'design';
-    case 3:
-      return 'toppings';
-    case 4:
-      return 'decorations';
-    default:
-      return '';
-  }
+export const getOptionCode = (id) => {
+  const catCode = Math.floor(id / 100) * 100;
+  if (catCode < 999)
+    return PRODUCT_OPTIONS.find((option) => option.id === catCode).optionCode;
+  else return ORDER_DETAILS.find((option) => option.id === catCode).optionCode;
 };
 
 export const loadProductData = (currentProductId, increment) => {

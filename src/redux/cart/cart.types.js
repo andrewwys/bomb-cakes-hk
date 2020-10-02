@@ -17,6 +17,8 @@ const CartActionTypes = {
 
   //Below are actions related to ORDER DETAILS:
   SET_PICKUP_DATE: 'SET_PICKUP_DATE',
+  SET_ORDER_DETAILS: 'SET_ORDER_DETAILS',
+  EDIT_ORDER_SELECTION: 'EDIT_ORDER_SELECTION',
 };
 
 export default CartActionTypes;

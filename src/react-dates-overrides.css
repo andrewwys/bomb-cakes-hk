@@ -1,27 +1,58 @@
 /* // NOTE: the order of these styles DO matter */
 
+.SingleDatePickerInput {
+  background-color: black;
+  border: 1px solid grey;
+  border-radius: 0;
+  min-width: 150px;
+}
+
+.DateInput_input__small {
+  font-size: 0.9rem;
+  background-color: black;
+  color: white;
+}
+
+.DateInput_input__focused {
+  border-bottom: 2px solid #3c91e6;
+}
+
+.DayPicker_weekHeader {
+  top: 58px;
+}
+
 /* // Will edit everything selected including everything between a range of dates */
 .CalendarDay__selected_span {
-  background: #82e0aa; /*/background*/
-  color: white; /*/text*/
-  border: 1px solid #f0803c; /* default styles include a border */
+  background: white; /*/background*/
+  color: black; /*/text*/
+  border: 4px solid #3c91e6; /* default styles include a border */
+  text-decoration: underline;
 }
 
 /* // Will edit selected date or the endpoints of a range of dates */
 .CalendarDay__selected {
-  background: #f0803c;
-  color: white;
+  background: white; /*/background*/
+  color: black; /*/text*/
+  border: 4px solid #3c91e6;
+  text-decoration: underline;
+}
+
+.SingleDatePickerInput_clearDate__default:focus,
+.SingleDatePickerInput_clearDate__default:hover {
+  background: black;
 }
 
 /* // Will edit when hovered over. _span style also has this property */
 .CalendarDay__selected:hover {
-  background: #f0803c;
-  color: white;
+  background: white; /*/background*/
+  color: black; /*/text*/
+  border: 4px solid #3c91e6;
+  text-decoration: underline;
 }
 
 /* // Will edit when the second date (end date) in a range of dates */
 /* // is not yet selected. Edits the dates between your mouse and said date */
-.CalendarDay__hovered_span:hover,
+/* .CalendarDay__hovered_span:hover,
 .CalendarDay__hovered_span {
   background: brown;
-}
+} */
