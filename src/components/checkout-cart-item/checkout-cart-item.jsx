@@ -10,23 +10,26 @@ import {
 import './checkout-cart-item.scss';
 
 const CheckoutCartItem = ({
+  id,
   item,
   reduceQty,
   incrementQty,
   removeFromCart,
 }) => {
   const {
-    productData: { id, title1, title2, image, price },
+    productData: { title1, title2, image, price },
     cakeSize,
     design,
     toppings,
     decorations,
     message,
     quantity,
-    amount,
+    sumExtraCost,
+    //amount,
   } = item;
+  const amount = quantity * (price + sumExtraCost);
   return (
-    <div className='item'>
+    <div className='item' key={id}>
       <div className='img-wrapper'>
         <img
           className='product-img'

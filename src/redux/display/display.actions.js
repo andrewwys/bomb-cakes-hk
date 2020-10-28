@@ -17,3 +17,12 @@ export const setCurrentPage = (page) => ({
   type: displayActionTypes.SET_CURRENT_PAGE,
   payload: page,
 });
+
+export const updateErrorMsgArr = (arr) => ({
+  type: displayActionTypes.UPDATE_ERROR_MSG_ARR,
+  payload: arr,
+});
+
+export const clearErrorMsgArr = () => ({
+  type: displayActionTypes.CLEAR_ERROR_MSG_ARR,
+});

@@ -1,17 +1,39 @@
+@mixin tag {
+  margin: 2px 3px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  color: black;
+}
+
 .option-selector {
   margin: 12px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #3a3a3a;
 
   .heading {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: flex-start;
+    margin-bottom: 1px;
     .title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       margin: 2px 0;
     }
     .option-names {
-      font-size: 1rem;
+      font-size: 0.8rem;
       margin: 2px 0;
+      display: flex;
+      justify-content: flex-start;
+      //align-items: baseline;
+      flex-wrap: wrap;
+      .option-tag {
+        @include tag;
+        background-color: #f9dc5c;
+      }
+      .hover-tag {
+        @include tag;
+        background-color: #f0eff4;
+      }
     }
   }
 

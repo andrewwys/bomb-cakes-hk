@@ -28,3 +28,7 @@ export const selectMessage = createSelector([selectNewItem], (item) => {
 export const selectProductData = createSelector([selectNewItem], (item) => {
   return item.productData;
 });
+
+export const selectSumExtraCost = createSelector([selectNewItem], (item) => {
+  return item.sumExtraCost;
+});

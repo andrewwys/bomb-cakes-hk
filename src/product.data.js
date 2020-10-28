@@ -42,9 +42,10 @@ export const PRODUCT_DATA = [
 export const PRODUCT_OPTIONS = [
   {
     id: 100,
-    optionName: 'Cake size',
+    optionName: 'Cake size*',
     optionCode: 'cakeSize',
-    limit: 1,
+    min: 1,
+    max: 1,
     optionValues: [
       {
         id: 101,
@@ -54,7 +55,7 @@ export const PRODUCT_OPTIONS = [
       },
       {
         id: 102,
-        name: '8 inches',
+        name: '8 inches (+$120)',
         extraCost: 120,
         image: optionStrawberry,
       },
@@ -62,9 +63,10 @@ export const PRODUCT_OPTIONS = [
   },
   {
     id: 200,
-    optionName: 'Design',
+    optionName: 'Design*',
     optionCode: 'design',
-    limit: 1,
+    min: 1,
+    max: 1,
     optionValues: [
       {
         id: 201,
@@ -92,13 +94,13 @@ export const PRODUCT_OPTIONS = [
       },
       {
         id: 205,
-        name: 'Rosette',
+        name: 'Rosette (+$20)',
         extraCost: 20,
         image: optionStrawberry,
       },
       {
         id: 206,
-        name: 'Filigree',
+        name: 'Filigree (+$20)',
         extraCost: 20,
         image: optionStrawberry,
       },
@@ -106,9 +108,10 @@ export const PRODUCT_OPTIONS = [
   },
   {
     id: 300,
-    optionName: 'Optional Toppings',
+    optionName: 'Toppings*',
     optionCode: 'toppings',
-    limit: 1,
+    min: 0,
+    max: 99,
     optionValues: [
       {
         id: 301,
@@ -118,13 +121,13 @@ export const PRODUCT_OPTIONS = [
       },
       {
         id: 302,
-        name: 'Strawberries',
+        name: 'Strawberries (+$30)',
         extraCost: 30,
         image: optionStrawberry,
       },
       {
         id: 303,
-        name: 'Oreo',
+        name: 'Oreo (+$10)',
         extraCost: 10,
         image: optionStrawberry,
       },
@@ -132,9 +135,10 @@ export const PRODUCT_OPTIONS = [
   },
   {
     id: 400,
-    optionName: 'Optional decorations',
+    optionName: 'Decorations',
     optionCode: 'decorations',
-    limit: 100,
+    min: 0,
+    max: 3,
     optionValues: [
       {
         id: 401,
@@ -150,14 +154,14 @@ export const PRODUCT_OPTIONS = [
       },
       {
         id: 403,
-        name: 'Orange cutout flowers',
-        extraCost: 0,
+        name: 'Orange cutout flowers (+$15)',
+        extraCost: 15,
         image: optionStrawberry,
       },
       {
         id: 404,
-        name: 'White cutout flowers',
-        extraCost: 0,
+        name: 'White cutout flowers (+$15)',
+        extraCost: 15,
         image: optionStrawberry,
       },
     ],
@@ -170,7 +174,8 @@ export const ORDER_DETAILS = [
     id: 1000,
     optionName: 'Accessories',
     optionCode: 'accessories',
-    limit: 0,
+    min: 0,
+    max: 99,
     optionValues: [
       {
         id: 1001,

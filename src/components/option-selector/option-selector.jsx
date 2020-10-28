@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import './option-selector.scss';
 import {
   editCakeOptions,
-  editOrderSelection,
+  //calculateCakePrice,
 } from '../../redux/cart/cart.actions';
 import { updateOptionOnHover } from '../../redux/display/display.actions';
 import {
@@ -15,57 +15,71 @@ import {
 import { selectOptionOnHover } from '../../redux/display/display.selectors';
 
 const OptionSelector = ({
-  productOption: { id, optionName, optionCode, limit, optionValues },
+  productOption: { id, optionName, optionCode, optionValues },
   editCakeOptions,
-  editOrderSelection,
   updateOptionOnHover,
+  //calculateCakePrice,
   accessories,
   newItem,
   optionOnHover,
 }) => {
   const isProductOption = id < 999 ? true : false; // is product option or checkout option
-  const displayOptionNames = () => {
-    if (optionOnHover && Math.floor(optionOnHover.id / 100) * 100 === id) {
-      return optionOnHover.name;
-    } else if (isProductOption) return newItem[optionCode];
-    //returns property value in newItem corresponding to optionCode (e.g. newItem.decorations)
-    else return accessories;
+  const formatSelectedOptions = (options) => {
+    return options.map((option, id) => (
+      <div className='option-tag' key={id}>
+        {option}
+      </div>
+    ));
   };
-  const handleClick = (optionValue) => {
-    if (id <= 999) {
-      editCakeOptions(optionValue);
-    } else {
-      editOrderSelection(optionValue);
-    }
+  const formatOptionOnHover = (name) => <div className='hover-tag'>{name}</div>;
+  const displayOptionNames = () => {
+    //determines what to show on option name label
+    if (optionOnHover && Math.floor(optionOnHover.id / 100) * 100 === id) {
+      return formatOptionOnHover(optionOnHover.name);
+    } else if (isProductOption)
+      return formatSelectedOptions(newItem[optionCode]);
+    //newItem[optionCode];
+    //returns property value in newItem corresponding to optionCode (e.g. newItem.decorations)
+    else return formatSelectedOptions(accessories); //!
+  };
+  const handleClick = (value) => {
+    editCakeOptions(value);
+    //calculateCakePrice();
   };
   return (
     <div className='option-selector'>
+      <div className='options'>
+        {optionValues.map((optionValue, optionId) => {
+          const { image, id, name } = optionValue;
+
+          const selectionArray = isProductOption
+            ? newItem[optionCode]
+            : accessories;
+          const selectedClassName = selectionArray.includes(name)
+            ? 'selected'
+            : '';
+          return (
+            <div
+              className={`option ${selectedClassName}`} //'option'
+              key={optionId}
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+              onClick={() => {
+                handleClick(optionValue);
+              }} //investigate why here execute once for each instance?
+              onMouseEnter={() => updateOptionOnHover(optionValue)}
+              onMouseLeave={() => updateOptionOnHover(null)}
+              onMouseUp={() => updateOptionOnHover(null)}
+            ></div>
+          );
+        })}
+      </div>
       <span className='heading'>
         <div className='title'>{`${optionName}:`}&nbsp;&nbsp;</div>
         <div className='option-names'>{displayOptionNames()}</div>
         {/* //display selected option, or option on hover */}
       </span>
-      <div className='options'>
-        {optionValues.map((optionValue) => {
-          const { image, id, name, ...others } = optionValue;
-          const selectedClassName =
-            name === newItem[optionCode] || name === accessories // indicate selection if name of option equals selected in state
-              ? 'selected'
-              : '';
-          return (
-            <div
-              className={`option ${selectedClassName}`} //'option'
-              style={{
-                backgroundImage: `url(${image})`,
-              }}
-              id={id}
-              onClick={() => handleClick(optionValue)}
-              onMouseEnter={() => updateOptionOnHover(optionValue)}
-              onMouseLeave={() => updateOptionOnHover(null)}
-            ></div>
-          );
-        })}
-      </div>
     </div>
   );
 };
@@ -78,8 +92,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   editCakeOptions: (value) => dispatch(editCakeOptions(value)),
-  editOrderSelection: (value) => dispatch(editOrderSelection(value)),
   updateOptionOnHover: (value) => dispatch(updateOptionOnHover(value)),
+  // calculateCakePrice: () => dispatch(calculateCakePrice()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OptionSelector);

@@ -11,6 +11,37 @@ export const getOptionCode = (id) => {
   else return ORDER_DETAILS.find((option) => option.id === catCode).optionCode;
 };
 
+export const getOptionType = (id) => {
+  const catCode = Math.floor(id / 100) * 100;
+  if (catCode < 999)
+    return PRODUCT_OPTIONS.find((option) => option.id === catCode);
+  else return ORDER_DETAILS.find((option) => option.id === catCode);
+};
+
+export const newSelectedOptions = (currentValues, max, name) => {
+  let newValues = [...currentValues];
+  if (newValues.includes(name)) {
+    return newValues.filter((value) => value !== name);
+  } else {
+    newValues.push(name);
+    if (newValues.length > max) {
+      newValues.splice(0, 1);
+    }
+    return newValues;
+  }
+};
+
+export const findCostbyOptionValueName = (optionValues, valueToBeDeleted) => {
+  let minusCost = 0;
+  optionValues.forEach((optionValue) => {
+    if (optionValue.name === valueToBeDeleted) {
+      minusCost = optionValue.extraCost;
+      console.log(minusCost);
+    }
+  });
+  return minusCost;
+};
+
 export const loadProductData = (currentProductId, increment) => {
   const len = PRODUCT_DATA.length;
   const newProductId = currentProductId + increment;

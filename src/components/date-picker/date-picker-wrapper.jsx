@@ -20,7 +20,7 @@ class DatePickerWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: moment(this.props.pickupDate), //moment().add(3, 'days'),  //
+      // date: moment(this.props.pickupDate), //moment().add(3, 'days'),  //
       focused: false,
     };
   }
@@ -37,14 +37,13 @@ class DatePickerWrapper extends React.Component {
     //this.setState({ date: pickupDate });
     return (
       <SingleDatePicker
-        date={this.state.date} // momentPropTypes.momentObj or null
+        date={moment(this.props.pickupDate)} // momentPropTypes.momentObj or null
         onDateChange={this.handleDateChange} // PropTypes.func.isRequired
         focused={this.state.focused} // PropTypes.bool
         onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
         id='your_unique_id' // PropTypes.string.isRequired,
         required
         showDefaultInputIcon
-        showClearDate
         small
         readOnly
         // isDayBlocked={(day) => moment.weekdays(day.weekday()) === 'Sunday'}

@@ -16,9 +16,12 @@ import {
 } from '../../redux/cart/cart.actions';
 import { setCurrentPage } from '../../redux/display/display.actions';
 import { saveNewItemToCart } from '../../redux/cart/cart.actions';
-import { selectAmount } from '../../redux/cart/cart.selectors';
-import { selectMessage } from '../../redux/cart/cart.selectors';
-import { selectProductData } from '../../redux/cart/cart.selectors';
+import {
+  selectAmount,
+  selectMessage,
+  selectProductData,
+  selectSumExtraCost,
+} from '../../redux/cart/cart.selectors';
 
 const ProductMenu = ({
   updateProductData,
@@ -29,12 +32,14 @@ const ProductMenu = ({
   productData,
   amount,
   message,
+  sumExtraCost,
 }) => {
-  const { id, optionName, limit, optionValues } = PRODUCT_OPTIONS;
+  // const { id, optionName, limit, optionValues } = PRODUCT_OPTIONS;
   const { title1, title2, price, image } = productData;
   const handleChange = (event) => {
     editCakeMsg(event.target.value);
   };
+  const total = price + sumExtraCost;
   return (
     <div className='container'>
       <span className='product-header'>
@@ -60,8 +65,8 @@ const ProductMenu = ({
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris{' '}
           </p>
-          {PRODUCT_OPTIONS.map((option) => (
-            <OptionSelector productOption={option} />
+          {PRODUCT_OPTIONS.map((option, id) => (
+            <OptionSelector productOption={option} key={id} />
           ))}
           <form className='product-order-form'>
             <label className='label'>Cake Message (optional): </label>
@@ -80,7 +85,7 @@ const ProductMenu = ({
             Clear Selection
           </p>
           <div className='summary'>
-            <div className='amount'>{`HK$ ${price}`}</div>
+            <div className='amount'>{`HK$ ${total}`}</div>
             <CustomButton
               buttonClassName='add-to-cart'
               style={{ marginRight: '10px' }}
@@ -101,6 +106,7 @@ const ProductMenu = ({
 };
 
 const mapStateToProps = createStructuredSelector({
+  sumExtraCost: selectSumExtraCost,
   productData: selectProductData,
   amount: selectAmount,
   message: selectMessage,

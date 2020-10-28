@@ -40,21 +40,43 @@
     font-size: 0.9rem;
     padding: 30px 0;
   }
+
+  // .error-msg-wrapper {
+  //   padding: 10px;
+  //   margin-top: 20px;
+  //   border-radius: 5px;
+  //   border-left: 7px solid #3c91e6;
+  //   font-size: 0.9rem;
+  //   color: #f0803c;
+  //   background-color: #f0eff4;
+  // }
   .order-details {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    font-size: 0.9rem;
 
-    flex-wrap: wrap;
+    .order-input-form {
+      margin: 15px 0 0 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
 
-    .order-details-left {
-      width: 320px;
-      margin-right: 25px;
-      .order-input-form {
-        margin: 15px 0 0 0;
-        display: flex;
-        flex-direction: column;
+      .order-details-left {
+        width: 320px;
+        margin-right: 25px;
+
+        .add-clear {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          font-size: 1rem;
+          text-decoration: underline;
+          cursor: pointer;
+          color: #a3a3a3;
+          margin-bottom: 10px;
+        }
+
         .label {
           font-size: 1rem;
         }
@@ -95,48 +117,47 @@
           width: 300px;
         }
       }
-    }
-    .order-details-right {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 365px;
 
-      .summary {
+      .order-details-right {
+        //width: 100%;
         display: flex;
         flex-direction: column;
-        height: 40%;
-        width: 90%;
-        background-color: #3a3a3a;
-        margin: 10px 0 0 0;
-        padding: 15px;
+        justify-content: center;
+        max-width: 365px;
 
-        .address {
-          font-family: Arial, Helvetica, sans-serif;
-          font-weight: lighter;
-          margin-bottom: 20px;
-        }
-
-        .total-wrapper {
-          margin-bottom: 20px;
+        .summary {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding-right: 15px;
-          font-size: 1.1rem;
+          flex-direction: column;
+          height: 40%;
+          width: 90%;
+          background-color: #3a3a3a;
+          margin: 10px 0 0 0;
+          padding: 15px;
 
-          .total-label {
+          .address {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: lighter;
+            margin-bottom: 20px;
           }
-          .total {
-            font-size: 1.2rem;
+
+          .total-wrapper {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 15px;
+            font-size: 1.1rem;
+
+            .total {
+              font-size: 1.2rem;
+            }
           }
-        }
-        .button-wrapper {
-          margin-bottom: 20px;
-          text-align: center;
-          .submit-btn {
-            width: 60px;
+          .button-wrapper {
+            margin-bottom: 20px;
+            text-align: center;
+            .submit-btn {
+              width: 60px;
+            }
           }
         }
       }

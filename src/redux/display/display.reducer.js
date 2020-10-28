@@ -1,4 +1,3 @@
-import { setCurrentPage } from './display.actions';
 import displayActionTypes from './display.types';
 
 const INITIAL_STATE = {
@@ -6,6 +5,7 @@ const INITIAL_STATE = {
   orderMode: false,
   currentPage: 'PRODUCT_MENU',
   optionOnHover: null,
+  popErrorMsg: [],
 };
 
 const displayReducer = (state = INITIAL_STATE, action) => {
@@ -29,6 +29,16 @@ const displayReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentPage: action.payload,
+      };
+    case displayActionTypes.UPDATE_ERROR_MSG_ARR:
+      return {
+        ...state,
+        popErrorMsg: action.payload,
+      };
+    case displayActionTypes.CLEAR_ERROR_MSG_ARR:
+      return {
+        ...state,
+        popErrorMsg: [],
       };
     default:
       return state;

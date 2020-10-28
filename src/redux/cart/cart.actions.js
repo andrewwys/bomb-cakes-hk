@@ -73,3 +73,7 @@ export const editOrderSelection = (optionValue) => ({
   type: CartActionTypes.EDIT_ORDER_SELECTION,
   payload: optionValue,
 });
+
+export const clearOrderDetails = () => ({
+  type: CartActionTypes.CLEAR_ORDER_DETAILS,
+});
