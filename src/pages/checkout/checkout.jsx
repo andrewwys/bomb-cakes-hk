@@ -4,7 +4,7 @@ import {
   clearOrderDetails,
   setOrderDetails,
   setPickupDate,
-  clearAll,
+  clearAfterSubmit,
 } from '../../redux/cart/cart.actions';
 import {
   turnOffOrderMode,
@@ -42,7 +42,7 @@ const Checkout = ({
   },
   updateErrorMsgArr,
   clearErrorMsgArr,
-  clearAll,
+  clearAfterSubmit,
   setOrderDetails,
   turnOffOrderMode,
   clearOrderDetails,
@@ -133,7 +133,7 @@ Phone no.: ${phone}
 Email address: ${email}
 Additional comments: ${comments}
 Selected accessories: ${accessories}
-Total amount: ${checkoutTotal}
+Total amount: ${checkoutTotal()}
 `;
       alert(submitInfo);
       cartItems.map((item) => {
@@ -162,7 +162,7 @@ Price: ${(sumExtraCost + price) * quantity}
       // clear form, close modal
       turnOffOrderMode();
       clearErrorMsgArr();
-      clearAll();
+      clearAfterSubmit();
     } else {
       updateErrorMsgArr(err);
     }
@@ -180,14 +180,19 @@ Price: ${(sumExtraCost + price) * quantity}
     clearErrorMsgArr();
   };
 
-  const checkoutTotal = cartItems.reduce((total, item) => {
-    const {
-      productData: { price },
-      quantity,
-      sumExtraCost,
-    } = item;
-    return total + (price + sumExtraCost) * quantity;
-  }, 0);
+  const checkoutTotal = () => {
+    //Total Amount of all chosen items
+    if (Array.isArray(cartItems) && cartItems.length) {
+      return cartItems.reduce((total, item) => {
+        const {
+          productData: { price },
+          quantity,
+          sumExtraCost,
+        } = item;
+        return total + (price + sumExtraCost) * quantity;
+      }, 0);
+    } else return 0;
+  };
 
   return (
     <div className='checkout-page'>
@@ -304,7 +309,7 @@ Price: ${(sumExtraCost + price) * quantity}
               </div>
               <div className='total-wrapper'>
                 <label className='total-label'>Total</label>
-                <div className='total'>{formatCurrency(checkoutTotal)}</div>
+                <div className='total'>{formatCurrency(checkoutTotal())}</div>
               </div>
               <div className='button-wrapper'>
                 <CustomButton
@@ -348,7 +353,7 @@ Price: ${(sumExtraCost + price) * quantity}
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
-  popErrorMsg: state.display.popErrorMsg,
+  //popErrorMsg: state.display.popErrorMsg,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -358,7 +363,7 @@ const mapDispatchToProps = (dispatch) => ({
   setPickupDate: (date) => dispatch(setPickupDate(date)),
   updateErrorMsgArr: (err) => dispatch(updateErrorMsgArr(err)),
   clearErrorMsgArr: () => dispatch(clearErrorMsgArr()),
-  clearAll: () => dispatch(clearAll()),
+  clearAfterSubmit: () => dispatch(clearAfterSubmit()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

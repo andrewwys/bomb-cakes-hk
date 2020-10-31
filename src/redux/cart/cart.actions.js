@@ -77,3 +77,7 @@ export const editOrderSelection = (optionValue) => ({
 export const clearOrderDetails = () => ({
   type: CartActionTypes.CLEAR_ORDER_DETAILS,
 });
+
+export const clearAfterSubmit = () => ({
+  type: CartActionTypes.CLEAR_AFTER_SUBMIT,
+});

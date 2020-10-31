@@ -4,6 +4,9 @@ import { createStructuredSelector } from 'reselect';
 
 import CustomButton from '../../components/custom-button/custom-button';
 import OptionSelector from '../../components/option-selector/option-selector';
+import ErrorNotification, {
+  errorCode,
+} from '../../components/error-notification/error-notification';
 
 import './product-menu.scss';
 
@@ -14,13 +17,18 @@ import {
   updateProductData,
   clearAll,
 } from '../../redux/cart/cart.actions';
-import { setCurrentPage } from '../../redux/display/display.actions';
+import {
+  setCurrentPage,
+  updateErrorMsgArr,
+  clearErrorMsgArr,
+} from '../../redux/display/display.actions';
 import { saveNewItemToCart } from '../../redux/cart/cart.actions';
 import {
   selectAmount,
   selectMessage,
   selectProductData,
   selectSumExtraCost,
+  selectNewItem,
 } from '../../redux/cart/cart.selectors';
 
 const ProductMenu = ({
@@ -29,17 +37,41 @@ const ProductMenu = ({
   setCurrentPage,
   clearAll,
   saveNewItemToCart,
+  updateErrorMsgArr,
+  clearErrorMsgArr,
   productData,
   amount,
   message,
   sumExtraCost,
+  newItem,
 }) => {
-  // const { id, optionName, limit, optionValues } = PRODUCT_OPTIONS;
+  const errorMsgArr = () => {
+    const arr = [];
+    if (
+      newItem.cakeSize.length < 1 ||
+      newItem.design.length < 1 ||
+      newItem.toppings.length < 1
+    ) {
+      arr.push(errorCode.PRODUCT_MENU_OPTIONS_REQUIRED);
+    }
+    return arr;
+  };
   const { title1, title2, price, image } = productData;
   const handleChange = (event) => {
     editCakeMsg(event.target.value);
   };
   const total = price + sumExtraCost;
+
+  const handleClickAddToCart = () => {
+    const err = errorMsgArr();
+    if (err.length <= 0) {
+      clearErrorMsgArr();
+      saveNewItemToCart();
+      setCurrentPage('CHECKOUT');
+    } else {
+      updateErrorMsgArr(err);
+    }
+  };
   return (
     <div className='container'>
       <span className='product-header'>
@@ -84,6 +116,7 @@ const ProductMenu = ({
           <p className='clear' onClick={() => clearAll()}>
             Clear Selection
           </p>
+          <ErrorNotification />
           <div className='summary'>
             <div className='amount'>{`HK$ ${total}`}</div>
             <CustomButton
@@ -91,8 +124,7 @@ const ProductMenu = ({
               style={{ marginRight: '10px' }}
               type='submit'
               onClick={() => {
-                saveNewItemToCart();
-                setCurrentPage('CHECKOUT');
+                handleClickAddToCart();
               }}
             >
               {' '}
@@ -110,6 +142,7 @@ const mapStateToProps = createStructuredSelector({
   productData: selectProductData,
   amount: selectAmount,
   message: selectMessage,
+  newItem: selectNewItem,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -118,6 +151,8 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentPage: (page) => dispatch(setCurrentPage(page)),
   clearAll: () => dispatch(clearAll()),
   saveNewItemToCart: () => dispatch(saveNewItemToCart()),
+  updateErrorMsgArr: (err) => dispatch(updateErrorMsgArr(err)),
+  clearErrorMsgArr: () => dispatch(clearErrorMsgArr()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductMenu);

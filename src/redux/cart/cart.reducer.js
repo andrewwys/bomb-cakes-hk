@@ -96,12 +96,26 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         },
       };
     case CartActionTypes.CLEAR_ALL:
-      const newState = INITIAL_STATE;
-      newState.cartItems = [];
-      return newState;
+      return {
+        ...state,
+        newItem: {
+          productData: PRODUCT_DATA[0],
+          cakeSize: [],
+          design: [],
+          toppings: [],
+          decorations: [],
+          message: '',
+          quantity: 1,
+          sumExtraCost: 0,
+          amount: 488,
+        },
+      };
     // :::: Actions related to CART ::::
     case CartActionTypes.SAVE_NEW_ITEM_TO_CART:
-      let newCartItems = state.cartItems;
+      let newCartItems = [];
+      if (state.cartItems.length > 0) {
+        state.cartItems.forEach((item) => newCartItems.push(item));
+      }
       newCartItems.push(state.newItem);
       return {
         ...state,
@@ -147,6 +161,9 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         email: '',
         comments: '',
       };
+
+    case CartActionTypes.CLEAR_AFTER_SUBMIT:
+      return INITIAL_STATE;
     default:
       return state;
   }

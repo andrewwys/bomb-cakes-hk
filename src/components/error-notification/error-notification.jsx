@@ -12,6 +12,7 @@ export const errorCode = {
   CHECKOUT_PICKUP_TIME_REQUIRED: 'CHECKOUT_PICKUP_TIME_REQUIRED',
   CHECKOUT_AGREE_TERMS: 'CHECKOUT_AGREE_TERMS',
   CHECKOUT_SEND_NEWSLETTER: 'CHECKOUT_SEND_NEWSLETTER',
+  PRODUCT_MENU_OPTIONS_REQUIRED: 'PRODUCT_MENU_OPTIONS_REQUIRED',
 };
 
 const errorMsg = {
@@ -24,6 +25,7 @@ const errorMsg = {
   CHECKOUT_PICKUP_TIME_REQUIRED: 'Pickup time is required.',
   CHECKOUT_AGREE_TERMS: 'Please agree to terms of service.',
   CHECKOUT_SEND_NEWSLETTER: 'Validation error', //honeypot validation
+  PRODUCT_MENU_OPTIONS_REQUIRED: 'Please fill in all required options (*).',
 };
 
 const ErrorNotification = ({ popErrorMsg }) => {

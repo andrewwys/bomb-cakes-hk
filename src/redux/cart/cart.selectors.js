@@ -17,6 +17,11 @@ export const selectNewItem = createSelector(
   (cart) => cart.newItem
 );
 
+export const selectCartItems = createSelector(
+  [selectCart],
+  (cart) => cart.cartItems
+);
+
 export const selectAmount = createSelector([selectNewItem], (item) => {
   return item.amount;
 });

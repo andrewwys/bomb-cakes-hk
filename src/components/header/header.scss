@@ -11,13 +11,15 @@
 
   .menu-icon {
     position: absolute;
-    left: 30px; 
+    left: 30px;
     display: inline-block;
     cursor: pointer;
     width: 40px;
     height: 40px;
 
-    .bar1, .bar2, .bar3 {
+    .bar1,
+    .bar2,
+    .bar3 {
       width: 35px;
       height: 5px;
       background-color: white;
@@ -32,7 +34,9 @@
         -webkit-transform: rotate(-45deg) translate(-9px, 6px);
         transform: rotate(-45deg) translate(-8px, 6px);
       }
-      .bar2 {opacity: 0;}
+      .bar2 {
+        opacity: 0;
+      }
       .bar3 {
         -webkit-transform: rotate(45deg) translate(-8px, -8px);
         transform: rotate(45deg) translate(-9px, -8px);
@@ -40,15 +44,16 @@
     }
 
     &:hover {
-      .bar1, .bar2, .bar3 {
+      .bar1,
+      .bar2,
+      .bar3 {
         width: 40px;
         height: 6px;
       }
     }
 
-    &:active{
-        padding: 3px 0 0 2px;
-
+    &:active {
+      padding: 3px 0 0 2px;
     }
   }
 
@@ -61,10 +66,11 @@
     flex-wrap: nowrap;
     width: auto;
 
-    .option, .logo-container {
+    .option,
+    .logo-container {
       margin: 20px 40px;
       font-size: larger;
-    
+
       .logo {
         height: 60px;
         width: 60px;
@@ -72,7 +78,10 @@
     }
   }
 
-
-
+  .cart-icon-container {
+    position: absolute;
+    right: 30px;
+    display: inline-block;
+    cursor: pointer;
+  }
 }
-
