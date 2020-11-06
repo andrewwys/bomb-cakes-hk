@@ -10,11 +10,11 @@ import {
   turnOffOrderMode,
   updateErrorMsgArr,
   clearErrorMsgArr,
-  //setCurrentPage,
+  setCurrentPage,
 } from '../../redux/display/display.actions';
 import moment from 'moment';
 import emailjs from 'emailjs-com';
-import { formatCurrency } from '../../utils';
+import { formatCurrency, genOrderNum } from '../../utils';
 
 import CheckoutCartItem from '../../components/checkout-cart-item/checkout-cart-item';
 import OptionSelector from '../../components/option-selector/option-selector';
@@ -45,6 +45,7 @@ const Checkout = ({
   clearAfterSubmit,
   setOrderDetails,
   turnOffOrderMode,
+  setCurrentPage,
   clearOrderDetails,
   setPickupDate,
 }) => {
@@ -84,9 +85,67 @@ const Checkout = ({
     }
     return arr;
   };
-  const sendEmail = (e) => {
-    e.preventDefault();
 
+  const renderCartItems = () => {
+    if (cartItems.length <= 0) {
+      return <div className='no-cart-item'>- OMG! Your Cart Is Empty -</div>;
+    } else {
+      return cartItems.map((item, id) => (
+        <CheckoutCartItem item={item} id={id} />
+      ));
+    }
+  };
+  // let datePickerIsFocused = false;
+  const hourOptions = [];
+  /* opening hour: 12 closing: 21 */
+  for (let i = 12; i <= 21; i++) {
+    hourOptions.push(<option value={i}>{i}</option>);
+  }
+
+  //   const orderSummary = () => {
+  //     let text = `::: New Order [${genOrderNum()}] :::
+  // Customer's name: ${name}
+  // Phone no.: ${phone}
+  // Email address: ${email}
+
+  // Pickup date: ${moment(pickupDate).format('dddd YYYY-MMM-DD')}
+  // Pickup time: ${pickupHour}:${pickupMin}
+  // Additional comments: ${comments}
+  // Selected accessories: ${accessories}
+  // Total amount: ${checkoutTotal()}
+
+  // ::::::::::::::::::::::::::::::::::::::::
+
+  // `;
+  //     cartItems.map((item) => {
+  //       const {
+  //         productData: { title1, title2, price },
+  //         cakeSize,
+  //         design,
+  //         toppings,
+  //         decorations,
+  //         message,
+  //         quantity,
+  //         sumExtraCost,
+  //       } = item;
+  //       const cakeInfo = `Cake ${cartItems.indexOf(item) + 1}:
+  // Cake name: ${title1} ${title2}
+  // Quantity: ${quantity}
+  // Cake size: ${cakeSize}
+  // Design: ${design}
+  // Toppings: ${toppings}
+  // Decorations: ${decorations}
+  // Cake message: ${message}
+  // Price: ${(sumExtraCost + price) * quantity}
+
+  // `;
+  //       text += cakeInfo;
+  //     });
+  //     return text;
+  //   };
+
+  const sendEmail = (e) => {
+    console.log('sending email... ', e);
     emailjs
       .sendForm(
         'service_hw5sptk',
@@ -105,62 +164,15 @@ const Checkout = ({
     e.target.reset();
   };
 
-  const renderCartItems = () => {
-    if (cartItems.length <= 0) {
-      return <div className='no-cart-item'>- OMG! Your Cart Is Empty -</div>;
-    } else {
-      return cartItems.map((item, id) => (
-        <CheckoutCartItem item={item} id={id} />
-      ));
-    }
-  };
-  // let datePickerIsFocused = false;
-  const hourOptions = [];
-  /* opening hour: 12 closing: 21 */
-  for (let i = 12; i <= 21; i++) {
-    hourOptions.push(<option value={i}>{i}</option>);
-  }
-
   const handleClickSubmit = (e) => {
     const err = errorMsgArr();
     if (err.length <= 0) {
       e.preventDefault();
-      let submitInfo = `Order Submitted! 
-Pickup date: ${moment(pickupDate).format('dddd YYYY-MMM-DD')}
-Pickup time: ${pickupHour}:${pickupMin}
-Customer's name: ${name}
-Phone no.: ${phone}
-Email address: ${email}
-Additional comments: ${comments}
-Selected accessories: ${accessories}
-Total amount: ${checkoutTotal()}
-`;
-      alert(submitInfo);
-      cartItems.map((item) => {
-        const {
-          productData: { title1, title2, price },
-          cakeSize,
-          design,
-          toppings,
-          decorations,
-          message,
-          quantity,
-          sumExtraCost,
-        } = item;
-        const cakeInfo = `Cake ${cartItems.indexOf(item) + 1}:
-Cake name: ${title1} ${title2}
-Quantity: ${quantity}
-Cake size: ${cakeSize}
-Design: ${design}
-Toppings: ${toppings}
-Decorations: ${decorations}
-Cake message: ${message}
-Price: ${(sumExtraCost + price) * quantity}
-`;
-        alert(cakeInfo);
-      });
+      console.log('handle clicking Submit...');
+      sendEmail(e);
       // clear form, close modal
-      turnOffOrderMode();
+      // turnOffOrderMode();
+      setCurrentPage('THANK_YOU');
       clearErrorMsgArr();
       clearAfterSubmit();
     } else {
@@ -206,7 +218,7 @@ Price: ${(sumExtraCost + price) * quantity}
       {renderCartItems()}
       <ErrorNotification />
       <div className='order-details'>
-        <form className='order-input-form' onSubmit={sendEmail}>
+        <form className='order-input-form' onSubmit={handleClickSubmit}>
           <div className='order-details-left'>
             <div className='add-clear'>
               <div className='add-cake' onClick={handleClickAddAnotherCake}>
@@ -315,7 +327,7 @@ Price: ${(sumExtraCost + price) * quantity}
                 <CustomButton
                   buttonClassName='submit-btn'
                   type='submit'
-                  onClick={handleClickSubmit}
+                  // onClick={handleClickSubmit}
                 >
                   {' '}
                   Submit{' '}
@@ -323,6 +335,7 @@ Price: ${(sumExtraCost + price) * quantity}
               </div>
             </div>
           </div>
+          {/* below are hidden field either used for emailjs form submission or as an antispam */}
           <input
             type='text'
             name='pickupDate'
@@ -335,6 +348,13 @@ Price: ${(sumExtraCost + price) * quantity}
             name='accessories'
             id='accessories'
             value={accessories}
+            style={{ display: 'none' }}
+          ></input>
+          <input
+            type='text'
+            name='orderNum'
+            id='orderNum'
+            value={genOrderNum()}
             style={{ display: 'none' }}
           ></input>
           <input //antispam
@@ -359,6 +379,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setOrderDetails: (input) => dispatch(setOrderDetails(input)),
   turnOffOrderMode: () => dispatch(turnOffOrderMode()),
+  setCurrentPage: (page) => dispatch(setCurrentPage(page)),
   clearOrderDetails: () => dispatch(clearOrderDetails()),
   setPickupDate: (date) => dispatch(setPickupDate(date)),
   updateErrorMsgArr: (err) => dispatch(updateErrorMsgArr(err)),

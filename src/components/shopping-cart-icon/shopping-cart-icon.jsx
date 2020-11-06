@@ -11,7 +11,6 @@ import {
 import './shopping-cart-icon.scss';
 
 const ShoppingCartIcon = ({ cartItems, setCurrentPage, toggleOrderMode }) => {
-  console.log('cart: ', Array.isArray(cartItems) && cartItems.length);
   return (
     <div
       class='icon-cart'

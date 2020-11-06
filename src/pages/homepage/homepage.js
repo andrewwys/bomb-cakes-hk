@@ -24,6 +24,13 @@ const contentFaq = [
   'Actual cake may look slightly different from the picture due to each designer’s techniques and materials available.',
 ];
 
+const ThankYou = () => (
+  <h1 className='thank-you'>
+    Thank you for your order! We will be in contact shortly to confirm the
+    details and proceed to payment.
+  </h1>
+);
+
 const HomePage = ({ orderMode, currentPage, ...props }) => {
   // Reference point objects for page scroll
   props.pageRef.products = React.useRef(null);
@@ -33,6 +40,8 @@ const HomePage = ({ orderMode, currentPage, ...props }) => {
     modalChild = <ProductMenu />;
   } else if (currentPage === 'CHECKOUT') {
     modalChild = <Checkout />;
+  } else if (currentPage === 'THANK_YOU') {
+    modalChild = <ThankYou />;
   }
   return (
     <div className='homepage'>
