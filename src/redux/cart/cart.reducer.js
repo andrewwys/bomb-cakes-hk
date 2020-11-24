@@ -38,7 +38,7 @@ const INITIAL_STATE = {
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CartActionTypes.EDIT_CAKE_OPTIONS:
-      const optionType = getOptionType(action.payload.id); // return option type object from PRODUCT_OPTIONS
+      const optionType = getOptionType(action.payload.valueId); // return option type object from PRODUCT_OPTIONS
       const { optionCode, max, id, optionValues } = optionType; // optionType e.g. Cake Size: {id: 100, max: 1, optionCode: 'cakeSize'}
       const currentValues =
         id < 1000 ? state.newItem[optionCode] : state[optionCode]; // An array of the specific option of the new item.

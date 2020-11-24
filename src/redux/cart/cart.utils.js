@@ -43,12 +43,9 @@ export const findCostbyOptionValueName = (optionValues, valueToBeDeleted) => {
 };
 
 export const loadProductData = (currentProductId, increment, productData) => {
-  console.log('currentProductId:', currentProductId)
-  console.log('loadProductData: ', productData);
   const len = productData.length; // i.e. 3
   //currentProductId is id gen by strapi (1,2,3...), non-sequential
   const currentProductIndex = productData.indexOf(productData.find(product=> product.id === currentProductId)); 
-  console.log('currentProductIndex: ', currentProductIndex);
   const newProductIndex = currentProductIndex + increment; 
   if (newProductIndex >= len) {
     return productData[0];

@@ -14,7 +14,7 @@ export const selectProductOptions = createSelector(
 
 export const selectOrderDetails = createSelector(
   [selectData],
-  (data) => data.OrderDetails
+  (data) => data.orderDetails
 );
 
 export const selectProductDataPending = createSelector(

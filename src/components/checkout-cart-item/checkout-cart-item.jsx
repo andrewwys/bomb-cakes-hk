@@ -7,6 +7,8 @@ import {
   removeFromCart,
 } from '../../redux/cart/cart.actions';
 
+import { ROOT_API_PATH } from '../../env';
+
 import './checkout-cart-item.scss';
 
 const CheckoutCartItem = ({
@@ -17,7 +19,7 @@ const CheckoutCartItem = ({
   removeFromCart,
 }) => {
   const {
-    productData: { title1, title2, image, price },
+    productData: { title1, title2, image: {url}, price },
     cakeSize,
     design,
     toppings,
@@ -33,7 +35,7 @@ const CheckoutCartItem = ({
       <div className='img-wrapper'>
         <img
           className='product-img'
-          src={image}
+          src={`${ROOT_API_PATH}${url}`}
           alt='product'
           height='80px'
           width='80px'

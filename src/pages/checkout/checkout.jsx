@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   clearOrderDetails,
   setOrderDetails,
@@ -12,6 +13,9 @@ import {
   clearErrorMsgArr,
   setCurrentPage,
 } from '../../redux/display/display.actions';
+import {selectCart2} from '../../redux/cart/cart.selectors';
+import {selectOrderDetails} from '../../redux/data/data.selectors';
+
 import moment from 'moment';
 import emailjs from 'emailjs-com';
 import { formatCurrency, genOrderNum } from '../../utils';
@@ -24,7 +28,7 @@ import ErrorNotification, {
   errorCode,
 } from '../../components/error-notification/error-notification';
 
-import { ORDER_DETAILS } from '../../product.data';
+// import { ORDER_DETAILS } from '../../product.data';
 
 import './checkout.scss';
 
@@ -48,6 +52,7 @@ const Checkout = ({
   setCurrentPage,
   clearOrderDetails,
   setPickupDate,
+  orderDetails,
 }) => {
   const errorMsgArr = () => {
     const arr = [];
@@ -206,6 +211,8 @@ const Checkout = ({
     } else return 0;
   };
 
+  console.log('order-details: ', orderDetails);
+
   return (
     <div className='checkout-page'>
       <h3 className='checkout-heading'>Checkout</h3>
@@ -304,7 +311,7 @@ const Checkout = ({
             ></input>
           </div>
           <div className='order-details-right'>
-            <OptionSelector productOption={ORDER_DETAILS[0]} />
+            <OptionSelector productOption={orderDetails[0]} />
             <div className='agree-terms'>
               <input
                 type='checkbox'
@@ -371,9 +378,9 @@ const Checkout = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  cart: state.cart,
-  //popErrorMsg: state.display.popErrorMsg,
+const mapStateToProps = createStructuredSelector({
+  cart: selectCart2,
+  orderDetails: selectOrderDetails,
 });
 
 const mapDispatchToProps = (dispatch) => ({

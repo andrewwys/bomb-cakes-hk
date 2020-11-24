@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import './option-selector.scss';
+import { ROOT_API_PATH } from '../../env';
 import {
   editCakeOptions,
   //calculateCakePrice,
@@ -13,9 +14,11 @@ import {
   selectAccessories,
 } from '../../redux/cart/cart.selectors';
 import { selectOptionOnHover } from '../../redux/display/display.selectors';
+//import { selectProductOptions } from '../../redux/data/data.selectors';
 
 const OptionSelector = ({
-  productOption: { id, optionName, optionCode, optionValues },
+  //productOptions,
+  productOption: { optId, optionName, optionCode, optionValues },
   editCakeOptions,
   updateOptionOnHover,
   //calculateCakePrice,
@@ -23,10 +26,10 @@ const OptionSelector = ({
   newItem,
   optionOnHover,
 }) => {
-  const isProductOption = id < 999 ? true : false; // is product option or checkout option
+  const isProductOption = optId < 999 ? true : false; // is product option or checkout option
   const formatSelectedOptions = (options) => {
-    return options.map((option, id) => (
-      <div className='option-tag' key={id}>
+    return options.map((option, optId) => (
+      <div className='option-tag' key={optId}>
         {option}
       </div>
     ));
@@ -34,7 +37,7 @@ const OptionSelector = ({
   const formatOptionOnHover = (name) => <div className='hover-tag'>{name}</div>;
   const displayOptionNames = () => {
     //determines what to show on option name label
-    if (optionOnHover && Math.floor(optionOnHover.id / 100) * 100 === id) {
+    if (optionOnHover && Math.floor(optionOnHover.optId / 100) * 100 === optId) {
       return formatOptionOnHover(optionOnHover.name);
     } else if (isProductOption)
       return formatSelectedOptions(newItem[optionCode]);
@@ -44,14 +47,12 @@ const OptionSelector = ({
   };
   const handleClick = (value) => {
     editCakeOptions(value);
-    //calculateCakePrice();
   };
   return (
     <div className='option-selector'>
       <div className='options'>
         {optionValues.map((optionValue, optionId) => {
-          const { image, id, name } = optionValue;
-
+          const { image: {url}, name } = optionValue;
           const selectionArray = isProductOption
             ? newItem[optionCode]
             : accessories;
@@ -63,7 +64,7 @@ const OptionSelector = ({
               className={`option ${selectedClassName}`} //'option'
               key={optionId}
               style={{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${ROOT_API_PATH}${url})`,
               }}
               onClick={() => {
                 handleClick(optionValue);
@@ -88,6 +89,7 @@ const mapStateToProps = createStructuredSelector({
   accessories: selectAccessories,
   newItem: selectNewItem,
   optionOnHover: selectOptionOnHover,
+  // productOptions: selectProductOptions,
 });
 
 const mapDispatchToProps = (dispatch) => ({

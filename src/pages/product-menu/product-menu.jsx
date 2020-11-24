@@ -30,7 +30,7 @@ import {
   selectSumExtraCost,
   selectNewItem,
 } from '../../redux/cart/cart.selectors';
-import { selectProductDataItems } from '../../redux/data/data.selectors';
+import { selectProductDataItems, selectProductOptions } from '../../redux/data/data.selectors';
 
 const ProductMenu = ({
   updateProductData,
@@ -45,7 +45,8 @@ const ProductMenu = ({
   message,
   sumExtraCost,
   newItem,
-  newItem : { productData: {title1, title2, price, image}},
+  newItem : { productData: {title1, title2, desc, price, image}},
+  productOptions,
 }) => {
   const errorMsgArr = () => {
     const arr = [];
@@ -74,8 +75,6 @@ const ProductMenu = ({
     }
   };
 
-  //const { title1, title2, price, image } = newItem.produdctData; //? await loading!!!?
-  console.log('product-menu: ', title1, title2, price, image );
   return (
     <div className='container'>
       <span className='product-header'>
@@ -103,11 +102,9 @@ const ProductMenu = ({
         ></div>
         <div className='product-options'>
           <p className='description'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris{' '}
+            {desc}
           </p>
-          {PRODUCT_OPTIONS.map((option, id) => (
+          {productOptions.map((option, id) => (
             <OptionSelector productOption={option} key={id} />
           ))}
           <form className='product-order-form'>
@@ -153,6 +150,7 @@ const mapStateToProps = createStructuredSelector({
   amount: selectAmount,
   message: selectMessage,
   newItem: selectNewItem,
+  productOptions: selectProductOptions
 });
 
 const mapDispatchToProps = (dispatch) => ({
