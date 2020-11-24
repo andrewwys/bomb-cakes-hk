@@ -42,15 +42,30 @@ export const findCostbyOptionValueName = (optionValues, valueToBeDeleted) => {
   return minusCost;
 };
 
-export const loadProductData = (currentProductId, increment) => {
-  const len = PRODUCT_DATA.length;
-  const newProductId = currentProductId + increment;
-  if (newProductId >= len) {
-    return PRODUCT_DATA[0];
-  } else if (newProductId < 0) {
-    return PRODUCT_DATA[len - 1];
-  } else return PRODUCT_DATA[newProductId];
+export const loadProductData = (currentProductId, increment, productData) => {
+  console.log('currentProductId:', currentProductId)
+  console.log('loadProductData: ', productData);
+  const len = productData.length; // i.e. 3
+  //currentProductId is id gen by strapi (1,2,3...), non-sequential
+  const currentProductIndex = productData.indexOf(productData.find(product=> product.id === currentProductId)); 
+  console.log('currentProductIndex: ', currentProductIndex);
+  const newProductIndex = currentProductIndex + increment; 
+  if (newProductIndex >= len) {
+    return productData[0];
+  } else if (newProductIndex < 0) {
+    return productData[len - 1];
+  } else return productData[newProductIndex];
 };
+
+// export const loadProductData = (currentProductId, increment) => {
+//   const len = PRODUCT_DATA.length;
+//   const newProductId = currentProductId + increment;
+//   if (newProductId >= len) {
+//     return PRODUCT_DATA[0];
+//   } else if (newProductId < 0) {
+//     return PRODUCT_DATA[len - 1];
+//   } else return PRODUCT_DATA[newProductId];
+// };
 
 export const newCartItemsAfterRemoving = (cartItems, payload) => {
   return cartItems.filter((cartItem) => cartItem !== payload);

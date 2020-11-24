@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
+import { selectProductDataItems } from '../../redux/data/data.selectors';
 import {
   setCurrentPage,
   toggleOrderMode,
@@ -11,6 +13,7 @@ import CustomButton from '../custom-button/custom-button';
 import './productSlider.scss';
 
 import { PRODUCT_DATA } from '../../product.data';
+import { ROOT_API_PATH } from '../../env';
 import { setProductData } from '../../redux/cart/cart.actions';
 
 class ProductSlider extends Component {
@@ -44,7 +47,15 @@ class ProductSlider extends Component {
   };
 
   renderSlide = (product) => {
-    const { title1, title2, desc, id, image, button } = product;
+    //const { title1, title2, desc, id, image, button } = product;
+    const {
+      title1,
+      title2,
+      desc,
+      id,
+      image: { url },
+      button,
+    } = product;
     const { toggleOrderMode, setCurrentPage, setProductData } = this.props;
     const handleClick = () => {
       setProductData(product);
@@ -54,7 +65,7 @@ class ProductSlider extends Component {
     return (
       <div
         className='slide'
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${ROOT_API_PATH}${url})` }}
         key={id}
       >
         <div className='slide-desc'>
@@ -73,11 +84,13 @@ class ProductSlider extends Component {
   };
 
   renderSlideShow = () => {
+    const { productData } = this.props;
     const slideCount = this.state.slideCount;
     const activeProducts = [];
     // adding products to activeProducts for displayed on screen
     for (let i = 0; i < this.state.numOfSlides; i++) {
-      activeProducts.push(PRODUCT_DATA[(slideCount + i) % PRODUCT_DATA.length]);
+      //activeProducts.push(PRODUCT_DATA[(slideCount + i) % PRODUCT_DATA.length]);
+      activeProducts.push(productData[(slideCount + i) % productData.length]);
     }
 
     return activeProducts.map((product) => this.renderSlide(product));
@@ -113,6 +126,7 @@ class ProductSlider extends Component {
       <div
         className={`dot ${this.productIdIsActive(p.id) ? 'dot-active' : ''}`}
         id={p.id}
+        key={p.id}
         // onClick={this.handleClickDot}
       ></div>
     ));
@@ -143,10 +157,14 @@ class ProductSlider extends Component {
   }
 }
 
+const mapStateToProps = createStructuredSelector({
+  productData: selectProductDataItems,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentPage: (page) => dispatch(setCurrentPage(page)),
   setProductData: (product) => dispatch(setProductData(product)),
   toggleOrderMode: () => dispatch(toggleOrderMode()),
 });
 
-export default connect(null, mapDispatchToProps)(ProductSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductSlider);

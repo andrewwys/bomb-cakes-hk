@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './react-dates-overrides.css';
 import './App.css';
 import HomePage from './pages/homepage/homepage';
 import Header from './components/header/header';
+import { selectProductOptionsPending, selectProductDataPending, selectOrderDetailsPending} from './redux/data/data.selectors';
+import {
+  fetchProductData,
+  fetchOrderDetails,
+  fetchProductOptions,
+} from './redux/data/data.actions';
 
 //Font Switch for user testing only
 const FontSwitch = (props) => {
@@ -40,7 +48,11 @@ class App extends Component {
       },
     };
   }
-
+componentDidMount(){
+    this.props.fetchProductData();
+    this.props.fetchProductOptions();
+    this.props.fetchOrderDetails();
+}
   //Font Switch for user testing
   count = 0;
   fontOptions = ['Averia Gruesa Libre', 'Mulish', 'Noto Sans JP', 'VT323'];
@@ -61,7 +73,12 @@ class App extends Component {
   };
 
   render() {
-    return (
+
+    const { productDataPending, productOptionsPending, orderDetailsPending } = this.props;
+    if (productDataPending || productOptionsPending || orderDetailsPending) {
+      return <div>Fetching data...</div>
+    } else {
+    } return (
       <div
         className='App'
         style={{
@@ -83,4 +100,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  productDataPending: selectProductDataPending,
+  productOptionsPending: selectProductOptionsPending, 
+  orderDetailsPending: selectOrderDetailsPending,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProductData: () => dispatch(fetchProductData()),
+  fetchOrderDetails: () => dispatch(fetchOrderDetails()),
+  fetchProductOptions: () => dispatch(fetchProductOptions()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

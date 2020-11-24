@@ -11,7 +11,7 @@ import ErrorNotification, {
 import './product-menu.scss';
 
 import { PRODUCT_OPTIONS } from '../../product.data';
-
+import { ROOT_API_PATH } from '../../env';
 import {
   editCakeMsg,
   updateProductData,
@@ -26,10 +26,11 @@ import { saveNewItemToCart } from '../../redux/cart/cart.actions';
 import {
   selectAmount,
   selectMessage,
-  selectProductData,
+  // selectProductData,
   selectSumExtraCost,
   selectNewItem,
 } from '../../redux/cart/cart.selectors';
+import { selectProductDataItems } from '../../redux/data/data.selectors';
 
 const ProductMenu = ({
   updateProductData,
@@ -39,11 +40,12 @@ const ProductMenu = ({
   saveNewItemToCart,
   updateErrorMsgArr,
   clearErrorMsgArr,
-  productData,
+  productDataItems, // state.data
   amount,
   message,
   sumExtraCost,
   newItem,
+  newItem : { productData: {title1, title2, price, image}},
 }) => {
   const errorMsgArr = () => {
     const arr = [];
@@ -56,7 +58,6 @@ const ProductMenu = ({
     }
     return arr;
   };
-  const { title1, title2, price, image } = productData;
   const handleChange = (event) => {
     editCakeMsg(event.target.value);
   };
@@ -72,16 +73,25 @@ const ProductMenu = ({
       updateErrorMsgArr(err);
     }
   };
+
+  //const { title1, title2, price, image } = newItem.produdctData; //? await loading!!!?
+  console.log('product-menu: ', title1, title2, price, image );
   return (
     <div className='container'>
       <span className='product-header'>
         <div className='title'>{title1 + ' ' + title2}</div>
         <div className='navigate-products'>
-          <div className='prev-product' onClick={() => updateProductData(-1)}>
+          <div
+            className='prev-product'
+            onClick={() => updateProductData(-1, productDataItems)}
+          >
             &lt;&lt; Previous Product
           </div>
           <div className='divider'>&nbsp;|&nbsp;</div>
-          <div className='next-product' onClick={() => updateProductData(1)}>
+          <div
+            className='next-product'
+            onClick={() => updateProductData(1, productDataItems)}
+          >
             Next Product &gt;&gt;
           </div>
         </div>
@@ -89,7 +99,7 @@ const ProductMenu = ({
       <div className='product-details'>
         <div
           className='product-img'
-          style={{ backgroundImage: `url(${image})` }}
+          style={{ backgroundImage: `url(${ROOT_API_PATH}${image.url})` }}
         ></div>
         <div className='product-options'>
           <p className='description'>
@@ -139,14 +149,15 @@ const ProductMenu = ({
 
 const mapStateToProps = createStructuredSelector({
   sumExtraCost: selectSumExtraCost,
-  productData: selectProductData,
+  productDataItems: selectProductDataItems,
   amount: selectAmount,
   message: selectMessage,
   newItem: selectNewItem,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateProductData: (increment) => dispatch(updateProductData(increment)),
+  updateProductData: (increment, productData) =>
+    dispatch(updateProductData(increment, productData)),
   editCakeMsg: (text) => dispatch(editCakeMsg(text)),
   setCurrentPage: (page) => dispatch(setCurrentPage(page)),
   clearAll: () => dispatch(clearAll()),

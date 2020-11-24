@@ -85,13 +85,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         },
       };
     case CartActionTypes.UPDATE_PRODUCT_DATA:
+      console.log('cart-reducer: updata-product-data: ', action)
       return {
         ...state,
         newItem: {
           ...state.newItem,
           productData: loadProductData(
-            state.newItem.productData.id,
-            action.payload
+            state.newItem.productData.id, //3
+            action.increment,
+            action.productData
           ),
         },
       };

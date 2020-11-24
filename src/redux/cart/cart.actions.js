@@ -12,9 +12,10 @@ export const removeItem = (item) => ({
   payload: item,
 });
 
-export const updateProductData = (product) => ({
+export const updateProductData = (increment, productData) => ({
   type: CartActionTypes.UPDATE_PRODUCT_DATA,
-  payload: product,
+  increment: increment,
+  productData: productData,
 });
 
 export const setProductData = (product) => ({
