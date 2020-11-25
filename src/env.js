@@ -1,3 +1,5 @@
+export const DEV_MODE = true;
+
 export const ROOT_API_PATH = 'http://localhost:1337';
 
 export const apiPaths = {

@@ -14,7 +14,7 @@ import {
   setCurrentPage,
 } from '../../redux/display/display.actions';
 import {selectCart2} from '../../redux/cart/cart.selectors';
-import {selectOrderDetails} from '../../redux/data/data.selectors';
+import {selectOrderDetails, selectOrderDetailsError} from '../../redux/data/data.selectors';
 
 import moment from 'moment';
 import emailjs from 'emailjs-com';
@@ -27,8 +27,6 @@ import CustomButton from '../../components/custom-button/custom-button';
 import ErrorNotification, {
   errorCode,
 } from '../../components/error-notification/error-notification';
-
-// import { ORDER_DETAILS } from '../../product.data';
 
 import './checkout.scss';
 
@@ -53,6 +51,7 @@ const Checkout = ({
   clearOrderDetails,
   setPickupDate,
   orderDetails,
+  orderDetailsError,
 }) => {
   const errorMsgArr = () => {
     const arr = [];
@@ -311,7 +310,7 @@ const Checkout = ({
             ></input>
           </div>
           <div className='order-details-right'>
-            <OptionSelector productOption={orderDetails[0]} />
+            {!orderDetailsError ? <OptionSelector productOption={orderDetails[0]} /> : null}
             <div className='agree-terms'>
               <input
                 type='checkbox'
@@ -381,6 +380,7 @@ const Checkout = ({
 const mapStateToProps = createStructuredSelector({
   cart: selectCart2,
   orderDetails: selectOrderDetails,
+  orderDetailsError: selectOrderDetailsError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

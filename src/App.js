@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { DEV_MODE } from './env';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import './react-dates-overrides.css';
@@ -48,11 +49,11 @@ class App extends Component {
       },
     };
   }
-componentDidMount(){
+  componentDidMount(){
     this.props.fetchProductData();
     this.props.fetchProductOptions();
     this.props.fetchOrderDetails();
-}
+  }
   //Font Switch for user testing
   count = 0;
   fontOptions = ['Averia Gruesa Libre', 'Mulish', 'Noto Sans JP', 'VT323'];
@@ -75,8 +76,8 @@ componentDidMount(){
   render() {
 
     const { productDataPending, productOptionsPending, orderDetailsPending } = this.props;
-    if (productDataPending || productOptionsPending || orderDetailsPending) {
-      return <div>Fetching data...</div>
+    if (productDataPending || productOptionsPending || orderDetailsPending) { // if any API fetching is still pending
+      return <div>Loading...</div>
     } else {
     } return (
       <div
@@ -88,13 +89,14 @@ componentDidMount(){
       >
         <Header pageRef={this.state.pageRef} />
         <HomePage pageRef={this.state.pageRef} />
-        <FontSwitch
+        {DEV_MODE? <FontSwitch
           changeFont={this.changeFont}
           incrementFontSize={this.incrementFontSize}
           reduceFontSize={this.reduceFontSize}
           chosenFont={this.state.chosenFont}
           fontSize={this.state.fontSize}
-        />
+        /> : null}
+        
       </div>
     );
   }

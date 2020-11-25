@@ -26,7 +26,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
       console.log('dataReducer: product data fetch error.');
       return {
         ...state,
-        productDataPending: true,
+        productDataPending: false,
         productDataError: action.payload,
       };
     case dataActionTypes.PRODUCT_OPTIONS_SUCCESS:
@@ -41,7 +41,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
       console.log('dataReducer: product options fetch error.');
       return {
         ...state,
-        productOptionsPending: true,
+        productOptionsPending: false,
         productOptionsError: action.payload,
       };
     case dataActionTypes.ORDER_DETAILS_SUCCESS:
@@ -56,7 +56,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
       console.log('dataReducer: order details fetch error.');
       return {
         ...state,
-        orderDetailsPending: true,
+        orderDetailsPending: false,
         orderDetailsError: action.payload,
       };
     default:

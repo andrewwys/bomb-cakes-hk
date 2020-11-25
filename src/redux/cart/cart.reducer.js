@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   email: '',
   comments: '',
   newItem: {
-    productData: PRODUCT_DATA[0],
+    productData: [], // PRODUCT_DATA[0],
     cakeSize: [],
     design: [],
     toppings: [],
@@ -101,15 +101,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         newItem: {
-          productData: PRODUCT_DATA[0],
+          ...state.newItem,
+          // productData: PRODUCT_DATA[0],
           cakeSize: [],
           design: [],
           toppings: [],
           decorations: [],
           message: '',
-          quantity: 1,
-          sumExtraCost: 0,
-          amount: 488,
+          //quantity: 1,
+          //sumExtraCost: 0,
+          //amount: 488,
         },
       };
     // :::: Actions related to CART ::::

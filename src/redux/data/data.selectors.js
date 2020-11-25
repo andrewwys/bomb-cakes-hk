@@ -31,3 +31,18 @@ export const selectProductOptionsPending = createSelector(
   [selectData],
   (data) => data.productOptionsPending
 );
+
+export const selectProductDataError = createSelector(
+  [selectData],
+  (data) => data.productDataError
+);
+
+export const selectOrderDetailsError = createSelector(
+  [selectData],
+  (data) => data.orderDetailsError
+);
+
+export const selectProductOptionsError = createSelector(
+  [selectData],
+  (data) => data.productOptionsError
+);

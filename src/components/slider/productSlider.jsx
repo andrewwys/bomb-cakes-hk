@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectProductDataItems } from '../../redux/data/data.selectors';
+import { selectProductDataItems, selectProductDataError } from '../../redux/data/data.selectors';
 import {
   setCurrentPage,
   toggleOrderMode,
@@ -33,7 +33,6 @@ class ProductSlider extends Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
   }
-
   handleResize = () => {
     if (window.innerWidth < 700 && this.state.numOfSlides === 2) {
       this.setState({
@@ -84,16 +83,22 @@ class ProductSlider extends Component {
   };
 
   renderSlideShow = () => {
-    const { productData } = this.props;
+    const { productData, productDataError } = this.props;
     const slideCount = this.state.slideCount;
     const activeProducts = [];
-    // adding products to activeProducts for displayed on screen
-    for (let i = 0; i < this.state.numOfSlides; i++) {
+
+    if (!productDataError) {
+      // adding products to activeProducts for displayed on screen
+      for (let i = 0; i < this.state.numOfSlides; i++) {
       //activeProducts.push(PRODUCT_DATA[(slideCount + i) % PRODUCT_DATA.length]);
       activeProducts.push(productData[(slideCount + i) % productData.length]);
-    }
-
-    return activeProducts.map((product) => this.renderSlide(product));
+      }
+      return activeProducts.map((product) => this.renderSlide(product));
+    } else return (
+      <div>Shopping cart service is not available now. To order, please {' '}
+        <a href='mailto:order@bombcakeshk.com' target='_blank'>contact us</a> {' '}
+      by email.</div>
+    );
   };
 
   handleClick = (event) => {
@@ -103,7 +108,8 @@ class ProductSlider extends Component {
       this.setState({ slideCount: slideCount + increment });
     } else if (event.target.id === 'prev') {
       if (slideCount <= increment - 1) {
-        this.setState({ slideCount: PRODUCT_DATA.length - increment });
+        // this.setState({ slideCount: PRODUCT_DATA.length - increment });
+        this.setState({ slideCount: this.props.productData.length - increment });
       } else {
         this.setState({ slideCount: slideCount - increment });
       }
@@ -111,7 +117,7 @@ class ProductSlider extends Component {
   };
 
   productIdIsActive = (pid) => {
-    const len = PRODUCT_DATA.length; // no. of items in the product list
+    const len = this.props.productData.length; // no. of items in the product list
     const slideCount = this.state.slideCount % len; // current count mod len = lowest id of active items
     const numOfSlides = this.state.numOfSlides; // total number of active slides
     if (pid >= slideCount && pid <= slideCount + numOfSlides - 1) {
@@ -122,7 +128,7 @@ class ProductSlider extends Component {
   };
 
   renderDots = () => {
-    return PRODUCT_DATA.map((p) => (
+    return this.props.productData.map((p) => (
       <div
         className={`dot ${this.productIdIsActive(p.id) ? 'dot-active' : ''}`}
         id={p.id}
@@ -159,6 +165,8 @@ class ProductSlider extends Component {
 
 const mapStateToProps = createStructuredSelector({
   productData: selectProductDataItems,
+  productDataError: selectProductDataError,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
