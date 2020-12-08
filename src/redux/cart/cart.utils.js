@@ -1,22 +1,17 @@
-import {
-  PRODUCT_DATA,
-  PRODUCT_OPTIONS,
-  ORDER_DETAILS,
-} from '../../product.data';
 
-export const getOptionCode = (id) => {
+export const getOptionType = (id, data) => {
   const catCode = Math.floor(id / 100) * 100;
   if (catCode < 999)
-    return PRODUCT_OPTIONS.find((option) => option.id === catCode).optionCode;
-  else return ORDER_DETAILS.find((option) => option.id === catCode).optionCode;
+    return data.productOptions.find((option) => Number(option.optId) === catCode);
+  else return data.orderDetails.find((option) => Number(option.optId) === catCode);
 };
 
-export const getOptionType = (id) => {
-  const catCode = Math.floor(id / 100) * 100;
-  if (catCode < 999)
-    return PRODUCT_OPTIONS.find((option) => option.id === catCode);
-  else return ORDER_DETAILS.find((option) => option.id === catCode);
-};
+// export const getOptionCode = (id) => {
+//   const catCode = Math.floor(id / 100) * 100;
+//   if (catCode < 999)
+//     return PRODUCT_OPTIONS.find((option) => option.id === catCode).optionCode;
+//   else return ORDER_DETAILS.find((option) => option.id === catCode).optionCode;
+// };
 
 export const newSelectedOptions = (currentValues, max, name) => {
   let newValues = [...currentValues];

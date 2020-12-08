@@ -95,7 +95,7 @@ const Checkout = ({
       return <div className='no-cart-item'>- OMG! Your Cart Is Empty -</div>;
     } else {
       return cartItems.map((item, id) => (
-        <CheckoutCartItem item={item} id={id} />
+        <CheckoutCartItem item={item} id={id} key={id} />
       ));
     }
   };
@@ -103,50 +103,37 @@ const Checkout = ({
   const hourOptions = [];
   /* opening hour: 12 closing: 21 */
   for (let i = 12; i <= 21; i++) {
-    hourOptions.push(<option value={i}>{i}</option>);
+    hourOptions.push(<option value={i} key={i}>{i}</option>);
   }
 
-  //   const orderSummary = () => {
-  //     let text = `::: New Order [${genOrderNum()}] :::
-  // Customer's name: ${name}
-  // Phone no.: ${phone}
-  // Email address: ${email}
+    const orderSummary = () => {
+      const text = cartItems.reduce((summary, item) => {
+        const {
+          productData: { title1, title2, price },
+          cakeSize,
+          design,
+          toppings,
+          decorations,
+          message,
+          quantity,
+          sumExtraCost,
+        } = item;
+        const cakeInfo = `Cake ${cartItems.indexOf(item) + 1}:
+Cake name: ${title1} ${title2}
+Quantity: ${quantity}
+Cake size: ${cakeSize}
+Design: ${design}
+Toppings: ${toppings}
+Decorations: ${decorations}
+Cake message: ${message}
+Price: ${(sumExtraCost + price) * quantity}
+======================
 
-  // Pickup date: ${moment(pickupDate).format('dddd YYYY-MMM-DD')}
-  // Pickup time: ${pickupHour}:${pickupMin}
-  // Additional comments: ${comments}
-  // Selected accessories: ${accessories}
-  // Total amount: ${checkoutTotal()}
-
-  // ::::::::::::::::::::::::::::::::::::::::
-
-  // `;
-  //     cartItems.map((item) => {
-  //       const {
-  //         productData: { title1, title2, price },
-  //         cakeSize,
-  //         design,
-  //         toppings,
-  //         decorations,
-  //         message,
-  //         quantity,
-  //         sumExtraCost,
-  //       } = item;
-  //       const cakeInfo = `Cake ${cartItems.indexOf(item) + 1}:
-  // Cake name: ${title1} ${title2}
-  // Quantity: ${quantity}
-  // Cake size: ${cakeSize}
-  // Design: ${design}
-  // Toppings: ${toppings}
-  // Decorations: ${decorations}
-  // Cake message: ${message}
-  // Price: ${(sumExtraCost + price) * quantity}
-
-  // `;
-  //       text += cakeInfo;
-  //     });
-  //     return text;
-  //   };
+  `;
+        return summary + cakeInfo;
+      }, '');
+      return text;
+    };
 
   const sendEmail = (e) => {
     console.log('sending email... ', e);
@@ -168,11 +155,37 @@ const Checkout = ({
     e.target.reset();
   };
 
-  const handleClickSubmit = (e) => {
+  const handleClickSubmit = async (e) => {
+    e.persist();
     const err = errorMsgArr();
     if (err.length <= 0) {
+      const orderSendOut = {
+          "name": name,
+          "phone": phone,
+          "email": email,
+          "pickupDate": pickupDate,
+          "pickupTime": `${pickupHour}:${pickupMin}`,
+          "comments": comments,
+          "accessories": accessories.toString(),
+          "checkoutTotal": checkoutTotal(),
+          "items": orderSummary(),
+          "status": "NEW",
+      };
+      console.log(orderSendOut);
       e.preventDefault();
-      console.log('handle clicking Submit...');
+      try {
+        let response = await fetch('http://localhost:1337/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderSendOut)
+      });
+      let result = await response.json();
+      console.log(result);
+      } catch (error) {
+        console.log('error ocurred: ', error);
+      }
       sendEmail(e);
       // clear form, close modal
       // turnOffOrderMode();
@@ -209,8 +222,6 @@ const Checkout = ({
       }, 0);
     } else return 0;
   };
-
-  console.log('order-details: ', orderDetails);
 
   return (
     <div className='checkout-page'>
@@ -271,12 +282,12 @@ const Checkout = ({
               value={name}
               className='name personal-info'
               placeholder='Name*'
-              maxlength='20'
+              maxLength='20'
               required
               onChange={(event) => setOrderDetails(event.target)}
             ></input>
             <input
-              maxlength='8'
+              maxLength='8'
               type='text'
               pattern='[0-9]{8}'
               id='phone'
@@ -288,7 +299,7 @@ const Checkout = ({
               onChange={(event) => setOrderDetails(event.target)}
             ></input>
             <input
-              maxlength='80'
+              maxLength='80'
               type='email'
               id='email'
               name='email'
@@ -305,12 +316,13 @@ const Checkout = ({
               value={comments}
               className='comments personal-info'
               placeholder='Additional comments'
-              maxlength='100'
+              maxLength='100'
               onChange={(event) => setOrderDetails(event.target)}
             ></input>
           </div>
           <div className='order-details-right'>
-            {!orderDetailsError ? <OptionSelector productOption={orderDetails[0]} /> : null}
+            {!orderDetailsError && orderDetails.length > 0
+              ? <OptionSelector productOption={orderDetails[0]} /> : null}
             <div className='agree-terms'>
               <input
                 type='checkbox'
@@ -346,30 +358,30 @@ const Checkout = ({
             type='text'
             name='pickupDate'
             id='pickupDate'
-            value={pickupDate}
+            defaultValue={pickupDate}
             style={{ display: 'none' }}
           ></input>
           <input
             type='text'
             name='accessories'
             id='accessories'
-            value={accessories}
+            defaultValue={accessories}
             style={{ display: 'none' }}
           ></input>
           <input
             type='text'
             name='orderNum'
             id='orderNum'
-            value={genOrderNum()}
+            defaultValue={genOrderNum()}
             style={{ display: 'none' }}
           ></input>
           <input //antispam
             type='checkbox'
             id='send-newsletter'
-            value='1'
+            defaultValue='1'
             style={{ display: 'none' }}
-            tabindex='-1' // Can't be navigated to via the 'tab' key
-            autocomplete='off' // Can't be filled by auto-complete
+            tabIndex='-1' // Can't be navigated to via the 'tab' key
+            autoComplete='off' // Can't be filled by auto-complete
           ></input>
         </form>
       </div>

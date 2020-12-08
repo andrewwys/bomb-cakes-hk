@@ -13,22 +13,22 @@ import './shopping-cart-icon.scss';
 const ShoppingCartIcon = ({ cartItems, setCurrentPage, toggleOrderMode }) => {
   return (
     <div
-      class='icon-cart'
+      className='icon-cart'
       onClick={() => {
         setCurrentPage('CHECKOUT');
         toggleOrderMode();
       }}
     >
-      <div class='cart-line-1'></div>
-      <div class='cart-line-2'></div>
+      <div className='cart-line-1'></div>
+      <div className='cart-line-2'></div>
       <div
-        class='cart-line-3'
+        className='cart-line-3'
         style={{
           display:
             Array.isArray(cartItems) && cartItems.length ? 'inherit' : 'none',
         }}
       ></div>
-      <div class='cart-wheel'></div>
+      <div className='cart-wheel'></div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ReactMarkdown from 'react-markdown'
+
 import './info-section.scss';
 
 const InfoSection = ({ title, image, content, imageOnRight }) => {
@@ -9,14 +11,10 @@ const InfoSection = ({ title, image, content, imageOnRight }) => {
       className='info-section'
       style={{flexDirection: flexDir}}
     >
-      <img src={`${image}`} alt={`${title}`}/>
+      {image? <img src={`${image}`} alt={`${title}`}/> : null}
       <div className='content'>
         <h1 className='content-title'>{title}</h1>
-        <ul className='content-list'>
-          {content.map((row) =>
-            <li className='list-item' key={row.id} >{row}</li>
-          )}
-        </ul>
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import {
   newCartItemsAfterRemoving,
   findCostbyOptionValueName,
 } from './cart.utils';
-import { PRODUCT_DATA } from '../../product.data';
 
 const INITIAL_STATE = {
   cartItems: [],
@@ -38,10 +37,11 @@ const INITIAL_STATE = {
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CartActionTypes.EDIT_CAKE_OPTIONS:
-      const optionType = getOptionType(action.payload.valueId); // return option type object from PRODUCT_OPTIONS
-      const { optionCode, max, id, optionValues } = optionType; // optionType e.g. Cake Size: {id: 100, max: 1, optionCode: 'cakeSize'}
+      const optionType = getOptionType(action.payload.valueId, action.data); // return option type object from PRODUCT_OPTIONS
+      //console.log('optionType: ', optionType);
+      const { optionCode, max, optId, optionValues } = optionType; // optionType e.g. Cake Size: {id: 100, max: 1, optionCode: 'cakeSize'}
       const currentValues =
-        id < 1000 ? state.newItem[optionCode] : state[optionCode]; // An array of the specific option of the new item.
+        optId < 1000 ? state.newItem[optionCode] : state[optionCode]; // An array of the specific option of the new item.
       const { name, extraCost } = action.payload; //name and cost of the clicked option
       const operation = currentValues.includes(name) ? -1 : 1; // a multiplier, to determine add(1) or subtract(-1)
       let minusCost = 0;
@@ -52,7 +52,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       const newSumExtraCost =
         state.newItem.sumExtraCost + extraCost * operation - minusCost;
 
-      if (id <= 999) {
+      if (optId <= 999) {
         return {
           ...state,
           newItem: {

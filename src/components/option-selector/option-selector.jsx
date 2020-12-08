@@ -14,19 +14,20 @@ import {
   selectAccessories,
 } from '../../redux/cart/cart.selectors';
 import { selectOptionOnHover } from '../../redux/display/display.selectors';
-//import { selectProductOptions } from '../../redux/data/data.selectors';
+import { selectData2 } from '../../redux/data/data.selectors';
 
 const OptionSelector = ({
   //productOptions,
   productOption: { optId, optionName, optionCode, optionValues },
   editCakeOptions,
   updateOptionOnHover,
-  //calculateCakePrice,
   accessories,
   newItem,
   optionOnHover,
+  data,
 }) => {
-  const isProductOption = optId < 999 ? true : false; // is product option or checkout option
+  const isProductOption = optId <= 999 ? true : false; // is product option or checkout option
+  // console.log('opt-selector: ', optId, isProductOption);
   const formatSelectedOptions = (options) => {
     return options.map((option, optId) => (
       <div className='option-tag' key={optId}>
@@ -45,13 +46,13 @@ const OptionSelector = ({
     //returns property value in newItem corresponding to optionCode (e.g. newItem.decorations)
     else return formatSelectedOptions(accessories); //!
   };
-  const handleClick = (value) => {
-    editCakeOptions(value);
+  const handleClick = (value, data) => {
+    editCakeOptions(value, data);
   };
   return (
     <div className='option-selector'>
       <div className='options'>
-        {optionValues.map((optionValue, optionId) => {
+        {optionValues.map((optionValue, optId) => {
           const { image: {url}, name } = optionValue;
           const selectionArray = isProductOption
             ? newItem[optionCode]
@@ -62,12 +63,12 @@ const OptionSelector = ({
           return (
             <div
               className={`option ${selectedClassName}`} //'option'
-              key={optionId}
+              key={optId}
               style={{
                 backgroundImage: `url(${ROOT_API_PATH}${url})`,
               }}
               onClick={() => {
-                handleClick(optionValue);
+                handleClick(optionValue, data);
               }} //investigate why here execute once for each instance?
               onMouseEnter={() => updateOptionOnHover(optionValue)}
               onMouseLeave={() => updateOptionOnHover(null)}
@@ -89,11 +90,11 @@ const mapStateToProps = createStructuredSelector({
   accessories: selectAccessories,
   newItem: selectNewItem,
   optionOnHover: selectOptionOnHover,
-  // productOptions: selectProductOptions,
+  data: selectData2,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  editCakeOptions: (value) => dispatch(editCakeOptions(value)),
+  editCakeOptions: (value, data) => dispatch(editCakeOptions(value, data)),
   updateOptionOnHover: (value) => dispatch(updateOptionOnHover(value)),
   // calculateCakePrice: () => dispatch(calculateCakePrice()),
 });

@@ -75,7 +75,7 @@ const ProductMenu = ({
   };
 
   const optionsAndSummary = () => {
-    if (!productOptionsError) {
+    if (!productOptionsError && productOptions.length > 0) {
       return (
         <div className='options-and-summary'>
           {productOptions.map((option, id) => (
@@ -115,7 +115,7 @@ const ProductMenu = ({
         </div>
     )} else return (
       <div>Shopping cart service is not available now. To order, please {' '}
-        <a href='mailto:order@bombcakeshk.com' target='_blank'>contact us</a> {' '}
+        <a href='mailto:order@bombcakeshk.com' target='_blank' rel='noopener noreferrer'>contact us</a> {' '}
       by email.</div>);
   }
 

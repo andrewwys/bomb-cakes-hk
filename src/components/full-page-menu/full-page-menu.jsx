@@ -33,13 +33,13 @@ const FullPageMenu = ({ scrollToRef, pageRef, toggleMenuDisplay }) => {
       > ORDER NOW
       </CustomButton> */}
       <div className='icon-container'>
-        <a href='https://www.facebook.com/BombCakesHK/' target='_blank'>
+        <a href='https://www.facebook.com/BombCakesHK/' target='_blank' rel='noopener noreferrer'>
           <FacebookIcon style={{ paddingBottom: '2px', marginRight: '2px' }} />
         </a>
-        <a href='https://www.instagram.com/bombcakes.hk/' target='_blank'>
+        <a href='https://www.instagram.com/bombcakes.hk/' target='_blank' rel='noopener noreferrer'>
           <InstagramIcon />
         </a>
-        <a href='mailto:order@bombcakeshk.com' target='_blank'>
+        <a href='mailto:order@bombcakeshk.com' target='_blank' rel='noopener noreferrer'>
           <EmailIcon style={{ marginTop: '1px' }} />
         </a>
       </div>

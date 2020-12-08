@@ -23,9 +23,10 @@ export const setProductData = (product) => ({
   payload: product,
 });
 
-export const editCakeOptions = (optionValue) => ({
+export const editCakeOptions = (optionValue, data) => ({
   type: CartActionTypes.EDIT_CAKE_OPTIONS,
   payload: optionValue,
+  data: data,
 });
 
 export const editCakeMsg = (text) => ({

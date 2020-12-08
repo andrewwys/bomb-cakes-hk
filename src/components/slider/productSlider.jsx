@@ -12,7 +12,6 @@ import CustomButton from '../custom-button/custom-button';
 
 import './productSlider.scss';
 
-import { PRODUCT_DATA } from '../../product.data';
 import { ROOT_API_PATH } from '../../env';
 import { setProductData } from '../../redux/cart/cart.actions';
 
@@ -86,8 +85,7 @@ class ProductSlider extends Component {
     const { productData, productDataError } = this.props;
     const slideCount = this.state.slideCount;
     const activeProducts = [];
-
-    if (!productDataError) {
+    if (!productDataError && productData.length > 0) {
       // adding products to activeProducts for displayed on screen
       for (let i = 0; i < this.state.numOfSlides; i++) {
       //activeProducts.push(PRODUCT_DATA[(slideCount + i) % PRODUCT_DATA.length]);
@@ -96,7 +94,7 @@ class ProductSlider extends Component {
       return activeProducts.map((product) => this.renderSlide(product));
     } else return (
       <div>Shopping cart service is not available now. To order, please {' '}
-        <a href='mailto:order@bombcakeshk.com' target='_blank'>contact us</a> {' '}
+        <a href='mailto:order@bombcakeshk.com' target='_blank' rel='noopener noreferrer'>contact us</a> {' '}
       by email.</div>
     );
   };
@@ -128,7 +126,9 @@ class ProductSlider extends Component {
   };
 
   renderDots = () => {
-    return this.props.productData.map((p) => (
+    const { productData } = this.props;
+    if (productData.length > 0 ) {
+      return productData.map((p) => (
       <div
         className={`dot ${this.productIdIsActive(p.id) ? 'dot-active' : ''}`}
         id={p.id}
@@ -136,6 +136,8 @@ class ProductSlider extends Component {
         // onClick={this.handleClickDot}
       ></div>
     ));
+    } else return null;
+    
   };
 
   // handleClickDot = (event) => {

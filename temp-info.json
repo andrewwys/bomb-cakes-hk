@@ -1,0 +1,64 @@
+[
+  {
+    "id":1,
+    "title":"How it works?",
+    "published_at":"2020-11-25T12:39:40.291Z",
+    "created_at":"2020-11-25T12:39:36.340Z",
+    "updated_at":"2020-11-25T12:39:40.314Z",
+    "richText":"**<u>When will I get my cake?</u>**\n\nEach cake is handcrafted, orders require at-least 7 days in advance notice. *The 7day advance begins when payment is received.*\n\n**Where to pick up?** \n\nOnly Pick Up is available in Central ~~(via VeggieSF).~~\n\n**Other things to note:**\n\n- All cakes will be decorated as listed; Cakes will have a final check brief and all sales are final.\n- If customized designs are required a consultation/designer fee will be added to the cake charge.\n- We’re not gluten-free/nut-free/allergen-free.\n- Actual cake may look slightly different from the picture due to each designer’s techniques and materials available.\n\n![option-strawberry.jpg](/uploads/option_strawberry_f8750e143c.jpg)\n\n[facebook](https://www.facebook.com/BombCakesHK/)\n\n1. testing\n2. 123\n3. numbered list\n\n> quote asdfsdfadf wefev sdfs\n\n```code block: xyz```",
+    "imageOnRight":true,
+    "picture":{
+      "id":5,
+      "name":"Screenshot 2020-06-28 at 15.05.35.png",
+      "alternativeText":"",
+      "caption":"",
+      "width":796,
+      "height":789,
+      "formats":{
+        "thumbnail":{
+          "name":"thumbnail_Screenshot 2020-06-28 at 15.05.35.png",
+          "hash":"thumbnail_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc",
+          "ext":".png",
+          "mime":"image/png",
+          "width":157,
+          "height":156,
+          "size":65.83,
+          "path":null,
+          "url":"/uploads/thumbnail_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc.png"
+        },
+        "medium":{
+          "name":"medium_Screenshot 2020-06-28 at 15.05.35.png",
+          "hash":"medium_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc",
+          "ext":".png",
+          "mime":"image/png",
+          "width":750,
+          "height":743,
+          "size":1190.9,
+          "path":null,
+          "url":"/uploads/medium_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc.png"
+        },
+        "small":{
+          "name":"small_Screenshot 2020-06-28 at 15.05.35.png",
+          "hash":"small_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc",
+          "ext":".png",
+          "mime":"image/png",
+          "width":500,
+          "height":496,
+          "size":574.22,
+          "path":null,
+          "url":"/uploads/small_Screenshot_2020_06_28_at_15_05_35_b89c6a51bc.png"
+        }
+      },
+      "hash":"Screenshot_2020_06_28_at_15_05_35_b89c6a51bc",
+      "ext":".png",
+      "mime":"image/png",
+      "size":1280.25,
+      "url":"/uploads/Screenshot_2020_06_28_at_15_05_35_b89c6a51bc.png",
+      "previewUrl":null,
+      "provider":"local",
+      "provider_metadata":null,
+      "created_at":"2020-11-25T12:26:35.363Z",
+      "updated_at":"2020-11-25T12:26:35.379Z"
+    }
+  }
+]
