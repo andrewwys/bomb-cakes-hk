@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import './option-selector.scss';
-import { ROOT_API_PATH } from '../../env';
+// import { ROOT_API_PATH } from '../../env';
 import {
   editCakeOptions,
   //calculateCakePrice,
@@ -53,7 +53,9 @@ const OptionSelector = ({
     <div className='option-selector'>
       <div className='options'>
         {optionValues.map((optionValue, optId) => {
-          const { image: {url}, name } = optionValue;
+          const { name, image } = optionValue;
+          let url = '';
+          if (image != null) { url = image.url;} 
           const selectionArray = isProductOption
             ? newItem[optionCode]
             : accessories;
@@ -65,7 +67,7 @@ const OptionSelector = ({
               className={`option ${selectedClassName}`} //'option'
               key={optId}
               style={{
-                backgroundImage: `url(${ROOT_API_PATH}${url})`,
+                backgroundImage: `url(${url})`,
               }}
               onClick={() => {
                 handleClick(optionValue, data);

@@ -47,7 +47,7 @@ const HomePage = ({ orderMode, currentPage, ...props }) => {
           <InfoSection
             key={section.id}
             title={title}
-            image={picture ? `${apiPaths.ROOT_API_PATH}${picture.url}` : null}
+            image={picture ? `${picture.url}` : null}
             content={richText} //data[0].richText}
             imageOnRight={imageOnRight} // set image on right
           />

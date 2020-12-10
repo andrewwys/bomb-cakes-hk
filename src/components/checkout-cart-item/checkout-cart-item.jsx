@@ -7,7 +7,7 @@ import {
   removeFromCart,
 } from '../../redux/cart/cart.actions';
 
-import { ROOT_API_PATH } from '../../env';
+// import { ROOT_API_PATH } from '../../env';
 
 import './checkout-cart-item.scss';
 
@@ -35,7 +35,7 @@ const CheckoutCartItem = ({
       <div className='img-wrapper'>
         <img
           className='product-img'
-          src={`${ROOT_API_PATH}${url}`}
+          src={url}
           alt='product'
           height='80px'
           width='80px'

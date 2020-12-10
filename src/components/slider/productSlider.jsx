@@ -12,7 +12,7 @@ import CustomButton from '../custom-button/custom-button';
 
 import './productSlider.scss';
 
-import { ROOT_API_PATH } from '../../env';
+// import { ROOT_API_PATH } from '../../env';
 import { setProductData } from '../../redux/cart/cart.actions';
 
 class ProductSlider extends Component {
@@ -51,7 +51,7 @@ class ProductSlider extends Component {
       title2,
       desc,
       id,
-      image: { url },
+      image,
       button,
     } = product;
     const { toggleOrderMode, setCurrentPage, setProductData } = this.props;
@@ -60,10 +60,12 @@ class ProductSlider extends Component {
       toggleOrderMode();
       setCurrentPage('PRODUCT_MENU');
     };
+    let url = '';
+    if (image != null) {url = image.url}
     return (
       <div
         className='slide'
-        style={{ backgroundImage: `url(${ROOT_API_PATH}${url})` }}
+        style={{ backgroundImage: `url(${url})` }}
         key={id}
       >
         <div className='slide-desc'>
