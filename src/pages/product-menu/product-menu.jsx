@@ -9,7 +9,6 @@ import ErrorNotification, {
 } from '../../components/error-notification/error-notification';
 
 import './product-menu.scss';
-import { ROOT_API_PATH } from '../../env';
 import {
   editCakeMsg,
   updateProductData,
@@ -142,7 +141,7 @@ const ProductMenu = ({
       <div className='product-details'>
         <div
           className='product-img'
-          style={{ backgroundImage: `url(${ROOT_API_PATH}${image.url})` }}
+          style={{ backgroundImage: `url(${image.url})` }}
         ></div>
         <div className='product-options'>
           <p className='description'>
